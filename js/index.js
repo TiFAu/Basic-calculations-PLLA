@@ -223,7 +223,8 @@ const defaultData = {
     methane: "16.04 kg/kmol",
     methanol: "32.04 kg/kmol",
     oil: "220—400 г/моль",
-  },
+    propaneButane: "51 kg/kmol",
+  },  
   molarVolume: "22.413 m^3/kmol",
   pressuresAtNormalConditions: "0.101325 MPa",
   pressureAtStandardConditions: "0.101325 MPa",
@@ -2009,7 +2010,7 @@ calc.onclick = function () {
     parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]), 
     initialDate["Main general parameters"]["2.14 Estimated temperature"]));
 
-  if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || ["Main general parameters"]["2.05 The environment in the device"] ==  'propaneButane') {
+  if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || initialDate["Main general parameters"]["2.05 The environment in the device"] == 'propaneButane') {
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] = determiningTheDimensionlessFactorBettaFirst(
       initialDate["Main general parameters"]["2.02 Absolute pressure in the device"],
       initialDate["Main general parameters"]["2.04 Indicator of the adiabatic medium in the apparatus"]);
