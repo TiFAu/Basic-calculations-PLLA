@@ -70,6 +70,10 @@ a {
     display: inline-flex;  
 }
 
+tr:hover {
+  background-color: blue;
+}
+
 td{
     text-align: center;
 
