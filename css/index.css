@@ -5,7 +5,9 @@
 }
 body {
     padding: 3.2rem 0 0 0;
-    margin: 0 0 0 0; 
+    margin: 0 0 0 0;
+    --main-color: rgb(0, 221, 255, 0.94);
+    --main-color-select: red
 }
  
 ul {
@@ -30,7 +32,7 @@ h4 {
     padding-top: 1%;
     margin: 0;
     font-size: 2.4em;
-    background-color: rgb(0, 221, 255, 0.94);
+    background-color: var(--main-color);
     text-align: center;
     text-align-last: center;
     
@@ -46,14 +48,20 @@ section {
 input, button, select, text, option, textarea {
     width: 97%;
     font-size: 1.1em;
-    background-color: rgb(0, 221, 255, 0.94);
+    background-color: var(--main-color);
     text-align: center;
     text-align-last: center;
     padding: 0.1rem;
 }
+
+input:hover, select:hover, option:hover, textarea:hover {
+  background-color: var(--main-color-select);
+}
+
 button{
     margin: 1% 0 2% 0;
 }
+
 table {
     border: 1px;
     border-collapse: collapse;
@@ -71,7 +79,7 @@ a {
 }
 
 tr:hover {
-  background-color: blue;
+  background-color: rgb(10, 255, 255, 0.98);
 }
 
 td{
@@ -102,7 +110,7 @@ caption{
 div {
     width: 100vw;
     border: 1px solid black;
-    background-color: rgba(0, 221, 255, 0.94);
+    background-color: var(--main-color);
     text-align: center;
     font-size: 1.4rem;
     margin: 4px 0 0 0;
@@ -131,7 +139,7 @@ td.pr, li.pr {
     width: 100vw;
     display: flex;
     align-items: center;
-    background: rgba(0, 221, 255, 0.984);
+    background: var(--main-color);
     justify-content: space-between;
     border-bottom: 1px solid #000;
     z-index: 100;
@@ -190,7 +198,7 @@ td.pr, li.pr {
   
 .calc:hover {
     transform: scale(1.01);
-    background-color: red;
+    background-color: var(--main-color-select);
 }
 
 .resultsDate {
@@ -279,12 +287,12 @@ td.pr, li.pr {
 
 .contact-form-submit:hover {
     transform: scale(1.01);
-    background-color: red;
+    background-color: var(--main-color-select);
 }
 
 
 .contact-links {
-    background-color: rgba(0, 221, 255, 0.94);
+    background-color: var(--main-color);
     width: 100vw;
     display:flex;
     align-items: center;
@@ -316,7 +324,7 @@ td.pr, li.pr {
     left: 0;
     width: 100vw;
     height: 2rem;
-    background: rgba(0, 221, 255, 0.984);
+    background: var(--main-color);
     border: 1px solid black;
     font-size: 1.2rem;
     letter-spacing: 0.2rem;
