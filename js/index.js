@@ -508,7 +508,7 @@ function determiningTheSaturatedSteamPressure(substance, designTemperature) {
   const arrayOfErrorMessages = ["substance is incorrect", "designTemperature is incorrect", "Something went wrong and the rounding function to hundredth was calculated incorrectly"];
   const errorMessage = checkingReceivedArgumentValues(arguments, arrayOfErrorMessages);
   try {
-    const saturatedSteamPressure = Math.pow(10, (parseFloat(defaultData.antoinesCoefficients.A[substance]) - (parseFloat(defaultData.antoinesCoefficients.B[substance]) / (parseFloat(defaultData.antoinesCoefficients.C[substance]) + designTemperature))));
+    const saturatedSteamPressure = 0.133 * Math.pow(10, (parseFloat(defaultData.antoinesCoefficients.A[substance]) - (parseFloat(defaultData.antoinesCoefficients.B[substance]) / (parseFloat(defaultData.antoinesCoefficients.C[substance]) + designTemperature))));
     return saturatedSteamPressure;
   } catch (error) { viewingFunctionErrors(determiningTheSaturatedSteamPressure.name, errorMessage) };
 }
