@@ -508,7 +508,7 @@ function determiningTheSaturatedSteamPressure(substance, designTemperature) {
   const arrayOfErrorMessages = ["substance is incorrect", "designTemperature is incorrect", "Something went wrong and the rounding function to hundredth was calculated incorrectly"];
   const errorMessage = checkingReceivedArgumentValues(arguments, arrayOfErrorMessages);
   try {
-    const saturatedSteamPressure = 0.133 * Math.pow(10, (parseFloat(defaultData.antoinesCoefficients.A[substance]) - (parseFloat(defaultData.antoinesCoefficients.B[substance]) / (parseFloat(defaultData.antoinesCoefficients.C[substance]) + designTemperature))));
+    const saturatedSteamPressure = Math.pow(10, (parseFloat(defaultData.antoinesCoefficients.A[substance]) - (parseFloat(defaultData.antoinesCoefficients.B[substance]) / (parseFloat(defaultData.antoinesCoefficients.C[substance]) + designTemperature))));
     return saturatedSteamPressure;
   } catch (error) { viewingFunctionErrors(determiningTheSaturatedSteamPressure.name, errorMessage) };
 }
@@ -2093,7 +2093,8 @@ calc.onclick = function () {
       initialDate["Вихідні дані для сценарію 'Вибух'"]["Швидкість повітряного потоку над дзеркалом випаровуванн, м/с"],
       initialDate["Main general parameters"]["2.14 Estimated temperature"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] = roundingFunctionToHundredths (Math.pow(10, -6) 
-      * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
+      //Додумать место для применения для случая с 
+      //* intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
       * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5) * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] = roundingFunctionToHundredths(
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
