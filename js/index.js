@@ -1512,7 +1512,7 @@ const initialDate = {
 }
 
 // об'єкт результатів розрахунків
-const calculationResults = {
+let calculationResults = {
   "1. Вибух": {
     "1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж": null,
     "1.2 Загальна маса горючих парів вибухонебезпечної парогазової хмари, яка приведена до єдиної питомої енергії згоряння (дорівнює 46000 кДж/кг), кг": null,
@@ -1612,6 +1612,24 @@ const calculationResults = {
     "7.1 Надлишковий тиск вибуху, кПа": null
   }
 }
+
+/*
+"1. Вибух":{
+  "1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж": null,
+  "1.2 Загальна маса горючих парів вибухонебезпечної парогазової хмари, яка приведена до єдиної питомої енергії згоряння (дорівнює 46000 кДж/кг), кг": null,
+  "1.3 Відносний енергетичний потенціал, вибухонебезпечності технологічного блоку, Qв, кДж": null,
+  "1.4 Категорія вибухонебезпечності технологічного блоку": null,
+  "1.5 Тротиловий еквівалент вибухонебезпечності парогазового середовища, Wт, кг": null,
+  "1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах":null
+},
+"2. Факельне горіння": null,
+"3. Можлива вибухонебезпечна зона": null,
+"4. Пожежа проливу горючих рідин": null,
+"5. Параметри утворення вогняної кулі": null,
+"6. Розповсюдження хмари пари НХР": null,
+"7. Вибух у приміщенні": null
+}
+*/
 
 /** функция сохранения исходных данных в initialDate
  *
@@ -1864,7 +1882,8 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
   let arrayOfErrorMessages = ["resultsObject is incorrect", "elementIntoWhichToInsert is incorrect", "arrayWidths is incorrect", "Something went wrong and the rounding function to hundredth was calculated incorrectly"];
   let errorMessage = checkingReceivedArgumentValues (arguments, arrayOfErrorMessages);
   try {
-    //let keysOfTheResultingObject = Object.keys(resultsObject);
+    let keysOfTheResultingObject = Object.keys(calculationResults);
+    console.log (keysOfTheResultingObject)
     const tableCalculationResults = document.createElement("table");
     const tableHeader = document.createElement("caption");
     tableHeader.innerHTML = "3. Calculation results | Результати розрахунку";
@@ -1892,6 +1911,17 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     tr2.appendChild(td22)
     tableCalculationResults.appendChild(tr2)
     //
+    for (const key in keysOfTheResultingObject){
+      if ( calculationResults[keysOfTheResultingObject[key]] !== null ) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.innerHTML = keysOfTheResultingObject[key].slice ( 3, keysOfTheResultingObject[key].length )
+        td.colSpan = "2"
+        td.style.backgroundColor = "rgb(10, 255, 255, 0.98)";
+        tr.appendChild(td)
+        tableCalculationResults.appendChild(tr);
+      }
+    }
     if (explosion.checked) {
       // строка 3
       const tr3 = document.createElement("tr");
@@ -1998,7 +2028,7 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     resultsDate.classList.remove('resultsDate');
   } catch (error) { viewingFunctionErrors(displayingTheResultOfTheCalculationToHtml.name, errorMessage)};
  }
-calculationResults["1. Вибух"]["1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж"]
+//calculationResults["1. Вибух"]["1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж"]
 
 calc.onclick = function () {
   savingTheSourceDataInInitialDate ();
@@ -2387,6 +2417,14 @@ calc.onclick = function () {
       / intermediateValues["11. Вибух у приміщенні"]["11.05 Стехіометрична концентрація ГГ або парів ЛЗР та ГР, %(об.)"] / intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"]);
     calculationResults["7. Вибух у приміщенні"]["7.1 Надлишковий тиск вибуху, кПа"] = intermediateValues["11. Вибух у приміщенні"]["11.06 Надлишковий тиск вибуху, кПа"] 
   }
+  if (!anExplosionInTheRoom.checked) {calculationResults["7. Вибух у приміщенні"] = null};
+  if (!evaporationOfAHazardousChemicalSubstance.checked) {calculationResults["6. Розповсюдження хмари пари НХР"] = null};
+  if (!fireball.checked) {calculationResults["5. Параметри утворення вогняної кулі"] = null};
+  if (!straitFire.checked) {calculationResults["4. Пожежа проливу горючих рідин"] = null}
+  if (!torchBuring.checked) {calculationResults["2. Факельне горіння"] = null}
+  if (!explosion.checked) {calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"] = null}
+  
+
   results.innerHTML = ""
   displayingTheResultOfTheCalculationToHtml (results)
   console.log (defaultData);
