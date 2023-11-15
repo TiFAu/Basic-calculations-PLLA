@@ -1962,8 +1962,6 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
         }
       }
     }
-    //             10: ["Версія програми розрахунку","","","v.1.01"],
-    //             11: ["Експорт звіту до Excel", "", "", "<button id = 'resultToExcel' class = 'calc' >Expor to Excel</button>"]
     const trVersion = document.createElement("tr");
     const tdVersion1 = document.createElement("td");
     tdVersion1.innerHTML = "Версія програми розрахунку";
@@ -2381,7 +2379,6 @@ calc.onclick = function () {
   if (!torchBuring.checked) {calculationResults["2. Факельне горіння"] = null}
   if (!explosion.checked) {calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"] = null}
   
-
   results.innerHTML = ""
   displayingTheResultOfTheCalculationToHtml (results)
   console.log (defaultData);
@@ -2399,7 +2396,6 @@ calc.onclick = function () {
       window.location.href = uri + base64(format(template, ctx))
     }
   })();
-
 }
 
 
