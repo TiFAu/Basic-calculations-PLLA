@@ -75,7 +75,6 @@ const evaporationOfAHazardousChemicalSubstanceCalculationParameters = {
   9: ["The height of the collapse (for tanks with a volume of more than 2000 tons) | Висота обвалування (для ємностей об'ємом більше 2000 т)", " m | м", ["input", "heightOfBund", "number", "0"]]
 }
 
-
 const roomExplosionCalculationParameters = {
   0: ["tableRoomExplosion", "Output for scenario 'An explosion in the room' | Вихідні дані для сценарію 'Вибух в приміщенні'"],
   1: ["The length of the room | Довжина приміщення", " m | м", ["input", "theLengthOfTheRoom", "number", "5"]],
@@ -1093,7 +1092,6 @@ function determinationOfTheTerrainInfluenceCoefficientKm (factorKp, stateOfTheAt
   } catch (error) { viewingFunctionErrors(determinationOfTheTerrainInfluenceCoefficientKm.name, errorMessage) };
 }
 
-
 /** определение приведенного диаметра площади поверхности пролива ОХВ
  * @param {boolean} bundling
  * @param {number} theVolumeOfTheSubstanceContainer
@@ -1350,8 +1348,6 @@ function determinationOfTheReducedMassOfFlammableGases (specificHeatOfCombustion
   } catch (error) { viewingFunctionErrors(determinationOfTheReducedMassOfFlammableGases.name, errorMessage) };
 }
 
-
-
 /** определения безразмерного коэффициента "Бетта2" учитывающего давление и показатель адиабаты
  * @param {number} pressure
  * @param {number} adiabaticIndex
@@ -1512,7 +1508,7 @@ const initialDate = {
 }
 
 // об'єкт результатів розрахунків
-let calculationResults = {
+const calculationResults = {
   "1. Вибух": {
     "1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж": null,
     "1.2 Загальна маса горючих парів вибухонебезпечної парогазової хмари, яка приведена до єдиної питомої енергії згоряння (дорівнює 46000 кДж/кг), кг": null,
@@ -1531,55 +1527,55 @@ let calculationResults = {
     "2.1 Довжина факела, м": null,
     "2.2 Максимальна ширина факела, м": null,
     "2.3 Опіки ІІІ ступеня:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 49
+      "2.3.1 радіус ураження, м": null,
+      "2.3.2 інтенсивність теплового випромінювання, кВт/м.кв": 49
     },
     "2.4 Опіки ІІ ступеня:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 27.4
+      "2.4.1 радіус ураження, м": null,
+      "2.4.2 інтенсивність теплового випромінювання, кВт/м.кв": 27.4
     },
     "2.5 Опіки І ступеня:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 9
+      "2.5.1 радіус ураження, м": null,
+      "2.5.2 інтенсивність теплового випромінювання, кВт/м.кв": 9
     },
     "2.6 Безпечний поріг для людини у брезентовому одязі:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 4
+      "2.6.1 радіус ураження, м": null,
+      "2.6.2 інтенсивність теплового випромінювання, кВт/м.кв": 4
     },
     "2.7 Без негативних наслідків для людини у брезентовому одязі:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 1.4
+      "2.7.1 радіус ураження, м": null,
+      "2.7.2 інтенсивність теплового випромінювання, кВт/м.кв": 1.4
     },
   },
   "3. Можлива вибухонебезпечна зона": {
-    "Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м": null
+    "3.1 Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м": null
   },
   "4. Пожежа проливу горючих рідин": {
     "4.1 Ефективний діаметр проливу, м": null,
     "4.2 Висота полум‘я, м": null,
     "4.3 Без негативних наслідків на протязі тривалого часу:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 1.4
+      "4.3.1 радіус ураження, м": null,
+      "4.3.2 інтенсивність теплового випромінювання, кВт/м.кв": 1.4
     },
     "4.4 Безпечно для людини в брезентовому одязі:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 4.2
+      "4.4.1 радіус ураження, м": null,
+      "4.4.2 інтенсивність теплового випромінювання, кВт/м.кв": 4.2
     },
     "4.5 Нестерпний біль через 20–30с; Опік 1-го ступ. через 15–20с; Опік 2-го ступ. через 30 –40с; Загорання бавовни-волокна через 15 хв.:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 7.0
+      "4.5.1 радіус ураження, м": null,
+      "4.5.2 інтенсивність теплового випромінювання, кВт/м.кв": 7.0
     },
     "4.6 Нестерпний біль через 3–5с; Опік 1-го ступ. через 6– 8с; Опік 2-го ступ. через 12–16с:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 10.5
+      "4.6.1 радіус ураження, м": null,
+      "4.6.2 інтенсивність теплового випромінювання, кВт/м.кв": 10.5
     },
     "4.7 Загорання деревини з шорсткою поверхнею (вологість 12%) при тривалості опромінення 15 хв.:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 12.9
+      "4.7.1 радіус ураження, м": null,
+      "4.7.2 інтенсивність теплового випромінювання, кВт/м.кв": 12.9
     },
     "4.8 Загорання деревини, пофарбованою олійною фарбою по струганій поверхні, загоранні фанери:": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": 17.0
+      "4.8.1 радіус ураження, м": null,
+      "4.8.2 інтенсивність теплового випромінювання, кВт/м.кв": 17.0
     },
   },
   "5. Параметри утворення вогняної кулі": {
@@ -1587,19 +1583,19 @@ let calculationResults = {
     "5.2 Висота центру вогняної кулі, м": null,
     "5.3 Час існування вогняної кулі,  с": null,
     "5.4 Ступень ураження: опік І-го ступеня": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": null,
-      "доза теплового випромінювання, кДж/м.кв": 120
+      "5.4.1 радіус ураження, м": null,
+      "5.4.2 інтенсивність теплового випромінювання, кВт/м.кв": null,
+      "5.4.3 доза теплового випромінювання, кДж/м.кв": 120
     },
     "5.5 Ступень ураження: опік ІІ-го ступеня": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": null,
-      "доза теплового випромінювання, кДж/м.кв": 220
+      "5.5.1 радіус ураження, м": null,
+      "5.5.2 інтенсивність теплового випромінювання, кВт/м.кв": null,
+      "5.5.3 доза теплового випромінювання, кДж/м.кв": 220
     },
     "5.6 Ступень ураження: опік ІІІ-го ступеня": {
-      "радіус ураження, м": null,
-      "інтенсивність теплового випромінювання, кВт/м.кв": null,
-      "доза теплового випромінювання, кДж/м.кв": 320
+      "5.6.1 радіус ураження, м": null,
+      "5.6.2 інтенсивність теплового випромінювання, кВт/м.кв": null,
+      "5.6.3 доза теплового випромінювання, кДж/м.кв": 320
     },
   },
   "6. Розповсюдження хмари пари НХР": {
@@ -1883,7 +1879,7 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
   let errorMessage = checkingReceivedArgumentValues (arguments, arrayOfErrorMessages);
   try {
     let keysOfTheResultingObject = Object.keys(calculationResults);
-    console.log (keysOfTheResultingObject)
+    //console.log (keysOfTheResultingObject)
     const tableCalculationResults = document.createElement("table");
     const tableHeader = document.createElement("caption");
     tableHeader.innerHTML = "3. Calculation results | Результати розрахунку";
@@ -1905,12 +1901,14 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     const tr2 = document.createElement("tr");
     const td21 = document.createElement("td")
     td21.innerHTML = "1"
+    td21.style.fontWeight = "bold"
     tr2.appendChild(td21)
     const td22 = document.createElement("td")
     td22.innerHTML = "2"
+    td22.style.fontWeight = "bold"
     tr2.appendChild(td22)
     tableCalculationResults.appendChild(tr2)
-    //
+    //цикл для вывода результатов из 
     for (const key in keysOfTheResultingObject){
       if ( calculationResults[keysOfTheResultingObject[key]] !== null ) {
         const tr = document.createElement("tr");
@@ -1918,113 +1916,72 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
         td.innerHTML = keysOfTheResultingObject[key].slice ( 3, keysOfTheResultingObject[key].length )
         td.colSpan = "2"
         td.style.backgroundColor = "rgb(10, 255, 255, 0.98)";
+        td.style.fontWeight = "bold"
         tr.appendChild(td)
         tableCalculationResults.appendChild(tr);
+        if (typeof (calculationResults[keysOfTheResultingObject[key]]) == 'object') {
+          const keysOfScenarion = Object.keys(calculationResults[keysOfTheResultingObject[key]]);
+          for (const keyOfScenarion in keysOfScenarion) {
+            if (typeof(calculationResults[keysOfTheResultingObject[key]][keysOfScenarion[keyOfScenarion]]) !=='object'){
+              const tr = document.createElement("tr")
+              const td1 = document.createElement("td");
+              td1.innerHTML = keysOfScenarion[keyOfScenarion].slice ( 4, keysOfScenarion[keyOfScenarion].length);
+              td1.style.textAlign = "left"
+              tr.appendChild(td1);
+              const td2 = document.createElement("td");
+              //console.log (keysOfScenarion[keyOfScenarion])
+              td2.innerHTML = calculationResults[keysOfTheResultingObject[key]][keysOfScenarion[keyOfScenarion]]
+              tr.appendChild(td2);
+              tableCalculationResults.appendChild(tr);
+            } else {
+              if (calculationResults[keysOfTheResultingObject[key]][keysOfScenarion[keyOfScenarion]] !== null){
+                const tr = document.createElement("tr");
+                const td = document.createElement("td");
+                td.innerHTML = keysOfScenarion[keyOfScenarion].slice ( 4, keysOfScenarion[keyOfScenarion].length);
+                td.colSpan = "2"
+                td.style.fontWeight = "bold"
+                td.style.textAlign = "left"
+                tr.appendChild(td)
+                tableCalculationResults.appendChild(tr);
+                const keysOfParameters = Object.keys(calculationResults[keysOfTheResultingObject[key]][keysOfScenarion[keyOfScenarion]]);
+                for (const keyOfParameter in keysOfParameters) {
+                  const tr = document.createElement("tr");
+                  const td1 = document.createElement("td");
+                  td1.innerHTML = keysOfParameters[keyOfParameter].slice(5, keysOfParameters[keyOfParameter].length);
+                  td1.style.textAlign = "left"
+                  tr.appendChild(td1);
+                  const td2 = document.createElement("td");
+                  td2.innerHTML = calculationResults[keysOfTheResultingObject[key]][keysOfScenarion[keyOfScenarion]][keysOfParameters[keyOfParameter]];
+                  td2.style.verticalAlign = 'bottom' 
+                  tr.appendChild(td2);
+                  tableCalculationResults.appendChild(tr);
+                }
+              }
+            }
+          }
+        }
       }
     }
-    if (explosion.checked) {
-      // строка 3
-      const tr3 = document.createElement("tr");
-      const td31 = document.createElement("td")
-      td31.innerHTML = "Вибух"
-      td31.colSpan = "2"
-      td31.style.backgroundColor = "rgb(10, 255, 255, 0.98)";
-      tr3.appendChild(td31)
-      tableCalculationResults.appendChild(tr3);
-      //строка 4 
-      const tr4 = document.createElement("tr");
-      const td41 = document.createElement("td")
-      td41.innerHTML = "Енергетичний потенціал вибухонебезпечності, Е, кДж";
-      td41.style.textAlign= "left";
-      tr4.appendChild(td41)
-      const td42 = document.createElement("td");
-      td42.innerHTML = calculationResults["1. Вибух"]["1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж"]
-      tr4.appendChild(td42);
-      tableCalculationResults.appendChild(tr4);
-      //строка 5 
-      const tr5 = document.createElement("tr");
-      const td51 = document.createElement("td")
-      td51.innerHTML = "Загальна наведена маса горючих парів, m, кг";
-      td51.style.textAlign= "left";
-      tr5.appendChild(td51)
-      const td52 = document.createElement("td");
-      td52.innerHTML = calculationResults["1. Вибух"]["1.2 Загальна маса горючих парів вибухонебезпечної парогазової хмари, яка приведена до єдиної питомої енергії згоряння (дорівнює 46000 кДж/кг), кг"]
-      tr5.appendChild(td52);
-      tableCalculationResults.appendChild(tr5);
-      //строка 6 
-      const tr6 = document.createElement("tr");
-      const td61 = document.createElement("td")
-      td61.innerHTML = "Відносний енергетичний потенціал вибухонебезпечності технологічного блоку, Qв, кДж";
-      td61.style.textAlign= "left";
-      tr6.appendChild(td61)
-      const td62 = document.createElement("td");
-      td62.innerHTML = calculationResults["1. Вибух"]["1.3 Відносний енергетичний потенціал, вибухонебезпечності технологічного блоку, Qв, кДж"]
-      tr6.appendChild(td62);
-      tableCalculationResults.appendChild(tr6);
-      //строка 7 
-      const tr7 = document.createElement("tr");
-      const td71 = document.createElement("td");
-      td71.innerHTML = "Тротиловий еквівалент вибуху, Wт, кг";
-      td71.style.textAlign= "left";
-      tr7.appendChild(td71)
-      const td72 = document.createElement("td");
-      td72.innerHTML = calculationResults["1. Вибух"]["1.5 Тротиловий еквівалент вибухонебезпечності парогазового середовища, Wт, кг"]
-      tr7.appendChild(td72);
-      tableCalculationResults.appendChild(tr7);
-      //строка 8 
-      const tr8 = document.createElement("tr");
-      const td81 = document.createElement("td");
-      td81.innerHTML = "Категорія вибухонебезпечності технологічного блоку";
-      td81.style.textAlign= "left";
-      tr8.appendChild(td81)
-      const td82 = document.createElement("td");
-      td82.innerHTML = calculationResults["1. Вибух"]["1.4 Категорія вибухонебезпечності технологічного блоку"]
-      tr8.appendChild(td82);
-      tableCalculationResults.appendChild(tr8);
-            //строка 9 
-      const tr9 = document.createElement("tr");
-      const td91 = document.createElement("td");
-      td91.innerHTML = "Радіус руйнації в залежності від розміру надлишкового тиску по зонах";
-      td91.colSpan = "2"
-      td91.style.backgroundColor = "rgb(10, 255, 255, 0.98)";
-      //td91.style.textAlign= "left";
-      tr9.appendChild(td91)
-      tableCalculationResults.appendChild(tr9);
-      //строка 10
-      const tr10 = document.createElement("tr");
-      const td101 = document.createElement("td");
-      td101.innerHTML = "Радіус зони повного руйнування будинків і смертельної небезпеки для людей, на межі якої надлишковий тиск на фронті ударної хвилі  ∆Р ≥ 100 кПа, R<sub>1</sub>, м";
-      td101.style.textAlign= "left";
-      tr10.appendChild(td101)
-      const td102 = document.createElement("td");
-      td102.innerHTML = calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["1.6.1 Надлишковий тиск 100 кПа, смертельні наслідки, руйнування металевих і бетонних конструкцій, R1, м"];
-      tr10.appendChild(td102);
-      tableCalculationResults.appendChild(tr10);
-      //строка 11
-      const tr11 = document.createElement("tr");
-      const td111 = document.createElement("td");
-      td111.innerHTML = "Радіус зони сильних руйнувань будівельних конструкцій, обвалення цегляних стін і смертельної небезпеки для людей ∆Р = 70 кПа, R<sub>2</sub>, м";
-      td111.style.textAlign= "left";
-      tr11.appendChild(td111)
-      const td112 = document.createElement("td");
-      td112.innerHTML = calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["1.6.2 Надлишковий тиск 70 кПа, руйнування металевих і бетонних конструкцій до 50%, важкі травми обслуговуючого персоналу, R2, м"];
-      tr11.appendChild(td112);
-      tableCalculationResults.appendChild(tr11);
-      //строка 12
-      const tr12 = document.createElement("tr");
-      const td121 = document.createElement("td");
-      td121.innerHTML = "Радіус зони слабких руйнувань будівельних конструкцій, для відновлення яких потрібне їх часткове розбирання, та смертельної небезпеки для людей на відкритій місцевості ∆Р = 28 кПа, R<sub>3</sub>, м";
-      td121.style.textAlign= "left";
-      tr12.appendChild(td121)
-      const td122 = document.createElement("td");
-      td122.innerHTML = calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["1.6.3 Надлишковий тиск 28 кПа, руйнування будівель без обрушення, приводить до травм середньої важкості обслуговуючого персоналу R3, м"];
-      tr12.appendChild(td122);
-      tableCalculationResults.appendChild(tr12);
-    }
+    //             10: ["Версія програми розрахунку","","","v.1.01"],
+    //             11: ["Експорт звіту до Excel", "", "", "<button id = 'resultToExcel' class = 'calc' >Expor to Excel</button>"]
+    const trVersion = document.createElement("tr");
+    const tdVersion1 = document.createElement("td");
+    tdVersion1.innerHTML = "Версія програми розрахунку";
+    trVersion.appendChild (tdVersion1);
+    const tdVersion2 = document.createElement("td");
+    tdVersion2.innerHTML = "v.1.01";
+    trVersion.appendChild (tdVersion2);
+    tableCalculationResults.appendChild(trVersion)
 
-    //                 let th = document.createElement("td");
     tableCalculationResults.id = "tableResults";
     elementIntoWhichToInsert.appendChild(tableCalculationResults);
+
+    const exportButton = document.createElement("button");
+    exportButton.innerHTML = "Expor to Excel";
+    exportButton.id = 'resultToExcel';
+    exportButton.classList = 'calc';
+    elementIntoWhichToInsert.appendChild(exportButton);
+
     resultsDate.classList.remove('resultsDate');
   } catch (error) { viewingFunctionErrors(displayingTheResultOfTheCalculationToHtml.name, errorMessage)};
  }
@@ -2204,11 +2161,11 @@ calc.onclick = function () {
   // передача результатов в calculationResults
   calculationResults["2. Факельне горіння"]["2.1 Довжина факела, м"] = intermediateValues["06. Факельне горіння"]["06.05 Максимальна довжина факелу, м"];
   calculationResults["2. Факельне горіння"]["2.2 Максимальна ширина факела, м"] = intermediateValues["06. Факельне горіння"]["06.07 Максимальна ширина факелу, м"];
-  calculationResults["2. Факельне горіння"]["2.3 Опіки ІІІ ступеня:"]["радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.11 Опіки ІІІ ступеня"]["радіус ураження, м"];
-  calculationResults["2. Факельне горіння"]["2.4 Опіки ІІ ступеня:"]["радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.12 Опіки ІІ ступеня"]["радіус ураження, м"];
-  calculationResults["2. Факельне горіння"]["2.5 Опіки І ступеня:"]["радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.13 Опіки І ступеня"]["радіус ураження, м"];
-  calculationResults["2. Факельне горіння"]["2.6 Безпечний поріг для людини у брезентовому одязі:"]["радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.14 Безпечний поріг для людини у брезентовому одязі"]["радіус ураження, м"];
-  calculationResults["2. Факельне горіння"]["2.7 Без негативних наслідків для людини у брезентовому одязі:"]["радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.15 Без негативних наслідків для людини у брезентовому одязі"]["радіус ураження, м"];
+  calculationResults["2. Факельне горіння"]["2.3 Опіки ІІІ ступеня:"]["2.3.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.11 Опіки ІІІ ступеня"]["радіус ураження, м"];
+  calculationResults["2. Факельне горіння"]["2.4 Опіки ІІ ступеня:"]["2.4.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.12 Опіки ІІ ступеня"]["радіус ураження, м"];
+  calculationResults["2. Факельне горіння"]["2.5 Опіки І ступеня:"]["2.5.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.13 Опіки І ступеня"]["радіус ураження, м"];
+  calculationResults["2. Факельне горіння"]["2.6 Безпечний поріг для людини у брезентовому одязі:"]["2.6.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.14 Безпечний поріг для людини у брезентовому одязі"]["радіус ураження, м"];
+  calculationResults["2. Факельне горіння"]["2.7 Без негативних наслідків для людини у брезентовому одязі:"]["2.7.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.15 Без негативних наслідків для людини у брезентовому одязі"]["радіус ураження, м"];
   
   // расчет взрывоопасной зоны
   if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || initialDate["Main general parameters"]["2.05 The environment in the device"] ==  'propaneButane') {
@@ -2221,7 +2178,7 @@ calc.onclick = function () {
       * ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] / intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] 
       / intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]) ** 0.333 + ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] / Math.PI ) ** 0.5 );
   }
-  calculationResults["3. Можлива вибухонебезпечна зона"]["Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м"] = 
+  calculationResults["3. Можлива вибухонебезпечна зона"]["3.1 Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м"] = 
     intermediateValues["07. Можлива вибухонебезпечна зона"]["07.02 Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м"];
 
   // Расчет пожара пролива
@@ -2277,15 +2234,15 @@ calc.onclick = function () {
   // передача результатов в calculationResults
   calculationResults["4. Пожежа проливу горючих рідин"]["4.1 Ефективний діаметр проливу, м"] = intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"];
   calculationResults["4. Пожежа проливу горючих рідин"]["4.2 Висота полум‘я, м"] = intermediateValues["08. Пожежа проливу"]["08.05 Висота полум'я, м"];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.3 Без негативних наслідків на протязі тривалого часу:"]["радіус ураження, м"] = intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.01 Без негативних наслідків на протязі тривалого часу"];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.4 Безпечно для людини в брезентовому одязі:"]["радіус ураження, м"] = intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.02 Безпечно для людини в брезентовому одязі"];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.5 Нестерпний біль через 20–30с; Опік 1-го ступ. через 15–20с; Опік 2-го ступ. через 30 –40с; Загорання бавовни-волокна через 15 хв.:"]["радіус ураження, м"] = 
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.3 Без негативних наслідків на протязі тривалого часу:"]["4.3.1 радіус ураження, м"] = intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.01 Без негативних наслідків на протязі тривалого часу"];
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.4 Безпечно для людини в брезентовому одязі:"]["4.4.1 радіус ураження, м"] = intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.02 Безпечно для людини в брезентовому одязі"];
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.5 Нестерпний біль через 20–30с; Опік 1-го ступ. через 15–20с; Опік 2-го ступ. через 30 –40с; Загорання бавовни-волокна через 15 хв.:"]["4.5.1 радіус ураження, м"] = 
     intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.03 Нестерпний біль через 20–30с; Опік 1-го ступ. через 15–20с; Опік 2-го ступ. через 30 –40с; Загорання бавовни-волокна через 15 хв."];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.6 Нестерпний біль через 3–5с; Опік 1-го ступ. через 6– 8с; Опік 2-го ступ. через 12–16с:"]["радіус ураження, м"] = 
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.6 Нестерпний біль через 3–5с; Опік 1-го ступ. через 6– 8с; Опік 2-го ступ. через 12–16с:"]["4.6.1 радіус ураження, м"] = 
     intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.04 Нестерпний біль через 3–5с; Опік 1-го ступ. через 6– 8с; Опік 2-го ступ. через 12–16с"];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.7 Загорання деревини з шорсткою поверхнею (вологість 12%) при тривалості опромінення 15 хв.:"]["радіус ураження, м"] = 
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.7 Загорання деревини з шорсткою поверхнею (вологість 12%) при тривалості опромінення 15 хв.:"]["4.7.1 радіус ураження, м"] = 
     intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.05 Загорання деревини з шорсткою поверхнею (вологість 12%) при тривалості опромінення 15 хв."];
-  calculationResults["4. Пожежа проливу горючих рідин"]["4.8 Загорання деревини, пофарбованою олійною фарбою по струганій поверхні, загоранні фанери:"]["радіус ураження, м"] = 
+  calculationResults["4. Пожежа проливу горючих рідин"]["4.8 Загорання деревини, пофарбованою олійною фарбою по струганій поверхні, загоранні фанери:"]["4.8.1 радіус ураження, м"] = 
     intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.06 Загорання деревини, пофарбованою олійною фарбою по струганій поверхні, загоранні фанери"];
   
   //Расчет "Огненного шара"
@@ -2306,12 +2263,12 @@ calc.onclick = function () {
     calculationResults["5. Параметри утворення вогняної кулі"]["5.1 Діаметр вогняної кулі при викиді, м"] = intermediateValues["09. Вогняна куля"]["09.02 Ефективний діаметр вогняної кулі, м"];
     calculationResults["5. Параметри утворення вогняної кулі"]["5.2 Висота центру вогняної кулі, м"] = intermediateValues["09. Вогняна куля"]["09.03 Висота центру вогняної кулі, м"];
     calculationResults["5. Параметри утворення вогняної кулі"]["5.3 Час існування вогняної кулі,  с"] = intermediateValues["09. Вогняна куля"]["09.04 Час існування вогняної кулі, с"];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.4 Ступень ураження: опік І-го ступеня"]["радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.01 Ступень ураження: опік І-го ступеня"][1];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.4 Ступень ураження: опік І-го ступеня"]["інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.01 Ступень ураження: опік І-го ступеня"][0];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.5 Ступень ураження: опік ІІ-го ступеня"]["радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.02 Ступень ураження: опік ІІ-го ступеня"][1];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.5 Ступень ураження: опік ІІ-го ступеня"]["інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.02 Ступень ураження: опік ІІ-го ступеня"][0];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.6 Ступень ураження: опік ІІІ-го ступеня"]["радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.03 Ступень ураження: опік ІІІ-го ступеня"][1];
-    calculationResults["5. Параметри утворення вогняної кулі"]["5.6 Ступень ураження: опік ІІІ-го ступеня"]["інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.03 Ступень ураження: опік ІІІ-го ступеня"][0];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.4 Ступень ураження: опік І-го ступеня"]["5.4.1 радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.01 Ступень ураження: опік І-го ступеня"][1];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.4 Ступень ураження: опік І-го ступеня"]["5.4.2 інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.01 Ступень ураження: опік І-го ступеня"][0];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.5 Ступень ураження: опік ІІ-го ступеня"]["5.5.1 радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.02 Ступень ураження: опік ІІ-го ступеня"][1];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.5 Ступень ураження: опік ІІ-го ступеня"]["5.5.2 інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.02 Ступень ураження: опік ІІ-го ступеня"][0];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.6 Ступень ураження: опік ІІІ-го ступеня"]["5.6.1 радіус ураження, м"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.03 Ступень ураження: опік ІІІ-го ступеня"][1];
+    calculationResults["5. Параметри утворення вогняної кулі"]["5.6 Ступень ураження: опік ІІІ-го ступеня"]["5.6.2 інтенсивність теплового випромінювання, кВт/м.кв"] = intermediateValues["09. Вогняна куля"]["09.06 Радіуси зон інтенсивності теплового пиромінювання при 'вогняній кулі', м"]["09.06.03 Ступень ураження: опік ІІІ-го ступеня"][0];
   }
 
   //Расчет параметров облака ОХВ
@@ -2431,6 +2388,18 @@ calc.onclick = function () {
   console.log (initialDate)
   console.log (intermediateValues)
   console.log (calculationResults)
+  resultToExcel.onclick = (() => { //функция вывода результатов расчета в файл excel
+    const uri = 'data:application/vnd.ms-excel;base64,',
+    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+    base64 = (s) => window.btoa(unescape(encodeURIComponent(s))),
+    format = (s, c) => s.replace(/{(\w+)}/g, (m, p) => c[p])
+    return (name) => {
+      const table = document.getElementById ('tableResults')
+      const ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+      window.location.href = uri + base64(format(template, ctx))
+    }
+  })();
+
 }
 
 
