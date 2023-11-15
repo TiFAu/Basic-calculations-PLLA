@@ -45,7 +45,7 @@ const flareCombustionCalculationParameters = {
 
 const explosionCalculationParameters = {
   0: ["tableExplosion", "Output for scenario 'Explosion' | Вихідні дані для сценарію 'Вибух'"],
-  1: ["Participation ratio in accordance with DSTU B V.1.1-XXX:201 (p. 43) | Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)", " - ", ["input", "theCoefficientOfParticipationInTheExplosion", "number", "0.1"]],
+  1: ["Participation ratio in accordance with DSTU B V.1.1-36:2016 (p. 43) | Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)", " - ", ["input", "theCoefficientOfParticipationInTheExplosion", "number", "0.1"]],
   2: ["Air flow velocity over the evaporation mirror | Швидкість повітряного потоку над дзеркалом випаровування", " m/s | м/с ", ["select", "flowVelocityOverTheEvaporationMirror", ["0:0", "0.1:0,1", "0.2:0,2", "0.5:0,5", "1.0:1,0" ]]]
 }
 
@@ -54,7 +54,7 @@ const straitFireCalculationParameters = {
   1: ["The length of the roll | Довжина обвалування", " m | м", ["input", "lengthOfTheBund", "number", "0"]],
   2: ["The width of the collapse | Ширина обвалування", " m | м", ["input", "theWidthOfTheBund", "number", "0"]],
   3: ["The height of the collapse | Висота обвалування", " m | м", ["input", "theHeightOfTheBund", "number", "0"]],
-  4: ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-XXX:201 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 55)", "kW/m<sup>2</sup> | кВт/м<sup>2</sup>", ["input", "averageSurfaceDensityOfThermalRadiationOfTheFlameFiresOfShed", "number", "0"]]
+  4: ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)", "kW/m<sup>2</sup> | кВт/м<sup>2</sup>", ["input", "averageSurfaceDensityOfThermalRadiationOfTheFlameFiresOfShed", "number", "0"]]
 }
 
 const fireballCalculationParameters = {
@@ -1475,14 +1475,14 @@ const initialDate = {
     "The average surface density of thermal radiation of the flame of the torch": null
   },
   "Вихідні дані для сценарію 'Вибух'": {
-    "Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)": null,
+    "Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)": null,
     "Швидкість повітряного потоку над дзеркалом випаровуванн, м/с": null
   },
   "Вихідні дані для сценарію 'Пожежа проливу'": {
     "The length of the roll | Довжина обвалування": null,
     "The width of the collapse | Ширина обвалування": null,
     "The height of the collapse | Висота обвалування": null,
-    "The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-XXX:201 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 55)": null
+    "The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)": null
   },
   "Вихідні дані для сценарію 'Вогняна куля'": {
     "Average surface density of thermal radiation of the 'fireball' flame | Середньоповерхнева густина теплового випромінювання полум'я 'вогняної кулі'": null
@@ -1668,12 +1668,12 @@ function savingTheSourceDataInInitialDate () {
     }
     let elementExplosion = document.getElementById('explosion');
     if (elementExplosion.checked) {
-      initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)"] = +theCoefficientOfParticipationInTheExplosion.value;
+      initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] = +theCoefficientOfParticipationInTheExplosion.value;
       initialDate["Вихідні дані для сценарію 'Вибух'"]["Швидкість повітряного потоку над дзеркалом випаровуванн, м/с"] = +flowVelocityOverTheEvaporationMirror.value;
     }
     let elementStraitFire = document.getElementById('straitFire');
     if (elementStraitFire.checked) {
-      initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-XXX:201 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 55)"] = +averageSurfaceDensityOfThermalRadiationOfTheFlameFiresOfShed.value;
+      initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] = +averageSurfaceDensityOfThermalRadiationOfTheFlameFiresOfShed.value;
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] = + lengthOfTheBund.value;
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"] = + theWidthOfTheBund.value;
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The height of the collapse | Висота обвалування"] = + theHeightOfTheBund.value;
@@ -2020,7 +2020,7 @@ calc.onclick = function () {
       ["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] * initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.11 Приведена маса ГГ, кг"]  = roundingFunctionToHundredths ( determinationOfTheReducedMassOfFlammableGases (parseFloat (defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]
       ["2.05 The environment in the device"]]), intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"], initialDate["Вихідні дані для сценарію 'Вибух'"]
-      ["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)"]));
+      ["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.12 Сумма енергії адіабатичного розширення та згорання ПГФ, що знаходиться безпосередо у аварійному блоці, кДж"] = roundingFunctionToHundredths ( 
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.10 Енергія адіабатичного розширення ПГФ, кДж"] + intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.11 Приведена маса ГГ, кг"] 
       * parseFloat (defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]));
@@ -2065,7 +2065,7 @@ calc.onclick = function () {
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.25 Відносний енергетичний потенціал, кДж"],
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.24 Загальна маса ГГ приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"] = roundingFunctionToHundredths (
-      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT) * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)"] 
+      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT) * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"]);
   } else {
     intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] = roundingFunctionToHundredths( determiningTheSaturatedSteamPressure(initialDate["Main general parameters"]["2.05 The environment in the device"], initialDate["Main general parameters"]["2.14 Estimated temperature"]));
@@ -2096,9 +2096,9 @@ calc.onclick = function () {
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"] = roundingFunctionToHundredths (
       0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT)
-      * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"]);
+      * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"]);
   }
-  intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.01 Коефіцієнт участі"] = initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 43)"];
+  intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.01 Коефіцієнт участі"] = initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"];
   intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.02 Приведена маса ПГФ абоа ГГ, кг"] = roundingFunctionToHundredths (
     parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / parseFloat (defaultData.constantQ0) 
     * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] * intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.01 Коефіцієнт участі"]);
@@ -2201,8 +2201,8 @@ calc.onclick = function () {
     intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] = roundingFunctionToHundredths (( 4 * intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] / 4 ) ** 0.5)
     intermediateValues["08. Пожежа проливу"]["08.03 Густина теплового випромінювання полум'я в залежності від біаметру вогнища, кВт/м.кв"] = 
       (initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]
-        ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-XXX:201 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 55)"] !==0)? 
-      initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-XXX:201 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-ХХХ:201 (стор. 55)"] 
+        ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] !==0)? 
+      initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] 
       : determinationOfFlameThermalRadiationDensityAsAFunctionOfSpillDiameter (intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"], initialDate["Main general parameters"]["2.05 The environment in the device"]);
     intermediateValues["08. Пожежа проливу"]["08.04 Питома масова швидкість вигорання середовища, кг/(м.кв * с)"] = parseFloat (defaultData["Питома швидкість вигорання, кг/(м.кв * с)"][initialDate["Main general parameters"]["2.05 The environment in the device"]]);
     intermediateValues["08. Пожежа проливу"]["08.05 Висота полум'я, м"] = roundingFunctionToHundredths( 
