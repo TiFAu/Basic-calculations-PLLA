@@ -1994,7 +1994,7 @@ calc.onclick = function () {
   intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] = roundingFunctionToHundredths(determiningOfGasDensityAtDesignTemperature(
     parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]), 
     initialDate["Main general parameters"]["2.14 Estimated temperature"]));
-
+  // в случаи ГГ  
   if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || initialDate["Main general parameters"]["2.05 The environment in the device"] == 'propaneButane') {
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] = determiningTheDimensionlessFactorBettaFirst(
       initialDate["Main general parameters"]["2.02 Absolute pressure in the device"],
@@ -2067,7 +2067,7 @@ calc.onclick = function () {
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"] = roundingFunctionToHundredths (
       0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT) * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"]);
-  } else {
+  } else { // в случаи ЛЗР
     intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] = roundingFunctionToHundredths( determiningTheSaturatedSteamPressure(initialDate["Main general parameters"]["2.05 The environment in the device"], initialDate["Main general parameters"]["2.14 Estimated temperature"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] = roundingFunctionToHundredths ( evaporationAreaDetermination (
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"],
@@ -2077,11 +2077,19 @@ calc.onclick = function () {
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] = determiningTheValueOfTheNu (
       initialDate["Вихідні дані для сценарію 'Вибух'"]["Швидкість повітряного потоку над дзеркалом випаровуванн, м/с"],
       initialDate["Main general parameters"]["2.14 Estimated temperature"]);
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] = roundingFunctionToHundredths (Math.pow(10, -6) 
-      //Додумать место для применения для случая с 
-      //* intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
-      * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5) * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] = roundingFunctionToHundredths(
+      if (anExplosionInTheRoom.checked) {
+        intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
+          = roundingFunctionToHundredths (Math.pow(10, -6) 
+          * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
+          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5)
+          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
+      } else {
+        intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
+          = roundingFunctionToHundredths (Math.pow(10, -6) 
+          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5) 
+          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
+      }
+      intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] = roundingFunctionToHundredths(
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] 
       * initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"]);
@@ -2132,7 +2140,7 @@ calc.onclick = function () {
     intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.04 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["05.04.04 Надлишковий тиск 14 кПа, помірне руйнування перегородок, дверей, рам, легкі травми обслуговуючого персоналу, R4, м"];
   calculationResults["1. Вибух"]["1.6 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["1.6.5 Надлишковий тиск 2 кПа, малі пошкодження віконних рам (скла), що може привести до травмування обслуговуючого персоналу, R5, м"] = 
     intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.04 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["05.04.05 Надлишковий тиск 2 кПа, малі пошкодження віконних рам (скла), що може привести до травмування обслуговуючого персоналу, R5, м"];
-
+  // факельное горение
   if (initialDate["Вихідні дані для сценарію 'Факельне горіння'"]["The average surface density of thermal radiation of the flame of the torch"]) {
     intermediateValues["06. Факельне горіння"]["06.01 Швидкысть витыкання середовища із вхідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600 / Math.PI / Math.pow (innerDiameterOfSupplyPipe / 1000, 2));
     intermediateValues["06. Факельне горіння"]["06.02 Швидкысть витыкання середовища із вихідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600 / Math.PI / Math.pow (internalDiameterOfTheOutletPipe / 1000, 2));
