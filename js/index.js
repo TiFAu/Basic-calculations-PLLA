@@ -2079,15 +2079,15 @@ calc.onclick = function () {
       initialDate["Main general parameters"]["2.14 Estimated temperature"]);
       if (anExplosionInTheRoom.checked) {
         intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
-          = roundingFunctionToHundredths (Math.pow(10, -6) 
+          = Math.pow(10, -6) 
           * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
           * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5)
-          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
+          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"];
       } else {
-        intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
-          = roundingFunctionToHundredths (Math.pow(10, -6) 
+        intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"]
+          = Math.pow(10, -6) 
           * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5) 
-          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]);
+          * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"];
       }
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] = roundingFunctionToHundredths(
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
