@@ -153,7 +153,7 @@ const defaultData = {
   accelerationOfGravity: "9.81 m/c^2",
   antoinesCoefficients: {
     A: {
-      gasCondensate: "5.07020",
+      gasCondensate: "4.195",
       diesel: 5.07818,
       ethylMercaptan: 7.3527, // по метанолу
       methanol: "7.3527", //https://mybibliotekf.su/tom3/3-5822.html
@@ -196,7 +196,7 @@ const defaultData = {
     }
   },
   lowerConcentrationAisleOfFireSpread: {
-    gasCondensate: "1.08 %",
+    gasCondensate: "5.28 %",
     diesel: "0.6 %",
     ethylMercaptan: "5.28 %", // пока по метану
     methane: "5.28 %",
