@@ -2206,7 +2206,7 @@ calc.onclick = function () {
     } else {
       intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.13 The volume of the condensate collector of the device"] / parseFloat ( defaultData["Висота слою розливу"] ));
     }
-    intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] = roundingFunctionToHundredths (( 4 * intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] / 4 ) ** 0.5)
+    intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] = roundingFunctionToHundredths (( 4 * intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] / Math.PI ) ** 0.5);
     intermediateValues["08. Пожежа проливу"]["08.03 Густина теплового випромінювання полум'я в залежності від біаметру вогнища, кВт/м.кв"] = 
       (initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]
         ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] !==0)? 
@@ -2217,7 +2217,7 @@ calc.onclick = function () {
       42 * intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] * (intermediateValues["08. Пожежа проливу"]["08.04 Питома масова швидкість вигорання середовища, кг/(м.кв * с)"] / parseFloat(defaultData["Густина повітря за разрахункової температури (61 гарус С)"])
       / (parseFloat(defaultData.accelerationOfGravity) * intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"]) ** 0.5) ** 0.61);
     intermediateValues["08. Пожежа проливу"]["08.06 Коефіцієнт"] = roundingFunctionToHundredths(2 * intermediateValues["08. Пожежа проливу"]["08.05 Висота полум'я, м"] / intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"]);
-    intermediateValues["08. Пожежа проливу"]["08.07 Радіус для початку розрахунку"] = 10;
+    intermediateValues["08. Пожежа проливу"]["08.07 Радіус для початку розрахунку"] = 20;
     intermediateValues["08. Пожежа проливу"]["08.08 Радіуси зон інтенсивності випромінювання, м"]["08.08.01 Без негативних наслідків на протязі тривалого часу"] = roundingFunctionToHundredths(
       determiningTheRadiusOfImpactForAGivenThermalRadiationIntensityInASpillFire ( intermediateValues["08. Пожежа проливу"]["08.07 Радіус для початку розрахунку"], 1.4, intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"], intermediateValues["08. Пожежа проливу"]["08.06 Коефіцієнт"],
       intermediateValues["08. Пожежа проливу"]["08.03 Густина теплового випромінювання полум'я в залежності від біаметру вогнища, кВт/м.кв"]));
