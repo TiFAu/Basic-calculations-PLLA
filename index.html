@@ -49,19 +49,19 @@
             <span class="nav-list-item-line"></span>
         </li> -->
                 <li class="nav-list-item">
-                    <a href="#isxodDate">1. Initial data | Вихідні дані</a>
+                    <a href="#isxodDate">1. Вихідні дані</a>
                     <span class="nav-list-item-line"></span>
                 </li>
                 <li class="nav-list-item">
-                    <a href="#resultsDate">2. Calculation results | Результати разрахунку</a>
+                    <a href="#resultsDate">2. Результати разрахунку</a>
                     <span class="nav-list-item-line"></span>
                 </li>
                 <li class="nav-list-item">
-                    <a href="#aboutProject">3.About this project | Про проект</a>
+                    <a href="#aboutProject">3. О проекті</a>
                     <span class="nav-list-item-line"></span>
                 </li>
                 <li class="nav-list-item">
-                    <a href="#contact">4.Contacts | Контакти</a>
+                    <a href="#contact">4. Контакти</a>
                     <span class="nav-list-item-line"></span>
                 </li>
             </ul>
@@ -73,205 +73,221 @@
     <!--header -->
     <!-- <script src="js/isxod.js"></script> -->
     <!--основное содержимое окна-->
-    <article>
+    <!-- <article> -->
         <section id='isxodDate' class="flex">
             <div>
-                <h4>Calculation of damaging factors in the destruction of a vessel</h4>
-                <h4>Розрахунок вражаючих факторів при руйнуванні апарата</h4>
+              <h4>Розрахунок вражаючих факторів при руйнуванні апарата</h4>
             </div>
-            <div id='parameters'>
+            <div id='parameters' class="parameters">
                 <table id='parameter'>
-                    <caption>1. Scenarios for the development of an emergency situation are needed | Потрібні сценарії розвитку аварійної ситуації</caption>
+                    <caption>1. Потрібні сценарії розвитку аварійної ситуації</caption>
                     <tr>
-                        <th style="width: 10%">number in order</th>
-                        <th style="width: 70%">The scenario of the development of an emergency situation | Сценарій розвитку аварійної ситуації</th>
-                        <th style="width: 20%">Needed or not | Потрібен чи ні</th>
+                        <th style="width: 10%">№ з.п.</th>
+                        <th style="width: 70%">Сценарій розвитку аварійної ситуації</th>
+                        <th style="width: 20%">Потрібен чи ні</th>
                     </tr>
                     <tr>
                         <td>1.1</td>
-                        <td class="pr">Torch burning | Факельне горіння </td>
+                        <td class="pr">Факельне горіння</td>
                         <td><input type='checkbox' id='torchBuring' onchange="addDateForTorchBuring()"></td>
                     </tr>
                     <tr>
                         <td>1.2</td>
-                        <td class="pr">Explosion | Вибух </td>
+                        <td class="pr">Вибух</td>
                         <td><input type='checkbox' id='explosion' onchange="addDateForExplosion()"></td>
                     </tr>
                     <tr>
                         <td>1.3</td>
-                        <td class="pr">Strait fire | Пожежа проливу </td>
+                        <td class="pr">Пожежа проливу</td>
                         <td><input type='checkbox' id='straitFire' onchange="addDateForStraitFire()"></td>
                     </tr>
                     <tr>
                         <td>1.4</td>
-                        <td class="pr"> "Fireball" | "Вогняна куля" </td>
+                        <td class="pr">"Вогняна куля"</td>
                         <td><input type='checkbox' id='fireball' onchange="addDateForFireball()"></td>
                     </tr>
                     <tr>
                         <td>1.5</td>
-                        <td class="pr"> Evaporation of a hazardous chemical substance | Випаровування небезпечної хімічної речовини </td>
+                        <td class="pr">Випаровування небезпечної хімічної речовини</td>
                         <td><input type='checkbox' id='evaporationOfAHazardousChemicalSubstance' onchange="addDateForEvaporationOfAHazardousChemicalSubstance()"></td>
                     </tr>
                     <tr>
-                        <td>1.6</td>
-                        <td class="pr"> An explosion in the room | Вибух в приміщенні</td>
-                        <td><input type='checkbox' id='anExplosionInTheRoom' onchange="addDateForAnExplosionInTheRoom()"></td>
+                      <td>1.6</td>
+                      <td class="pr">Вибух в приміщенні</td>
+                      <td><input type='checkbox' id='anExplosionInTheRoom' onchange="addDateForAnExplosionInTheRoom()"></td>
                     </tr>
                     <tr>
                     </tr>
                 </table>
                 <table id="mainGeneralParameters">
-                    <caption>2. Main general parameters | Основні загальні параметри</caption>
+                  <caption>2. Загальні параметри</caption>
                     <tr>
-                        <th style="width: 10%">number in order</th>
-                        <th style="width: 50%">Parameter | Параметер</th>
-                        <th style="width: 20%">Units | Одиниці виміру</th>
-                        <th style="width: 20%">Мeaning | Значення</th>
+                      <th style="width: 10%">№ з.п.</th>
+                      <th style="width: 50%">Параметер</th>
+                      <th style="width: 20%">Одиниці виміру</th>
+                      <th style="width: 20%">Значення</th>
                     </tr>
                     <tr>
-                        <td>2.1</td>
-                        <td class="pr">Device name | Назва апарату </td>
-                        <td>-</td>
-                        <td><input  id="deviceName" value="Назва апарату"></td>
+                      <td>2.0</td>
+                      <td class="pr">Назва об'єкту </td>
+                      <td>-</td>
+                      <td><input  id="objectName" value="Назва об'єкту"></td>
                     </tr>
                     <tr>
-                        <td>2.2</td>
-                        <td class="pr">Absolute pressure in the device | Тиск абсолютний в апараті</td>
-                        <td>MPa | МПа</td>
-                        <td><input type="number" id="absolutePressure" value="5.5"></td>
+                      <td>2.1</td>
+                      <td class="pr">Назва установки</td>
+                      <td>-</td>
+                      <td><input  id="installationsNamed" value="Назва установки"></td>
                     </tr>
                     <tr>
-                        <td>2.3</td>
-                        <td class="pr">The temperature in the device | Температура в апараті</td>
-                        <td><sup>0</sup> C</td>
-                        <td><input type="number" id="temperature" value="25"></td>
+                      <td>2.2</td>
+                      <td class="pr">Назва блоку</td>
+                      <td>-</td>
+                      <td><input  id="blocksNamed" value="Назва блоку"></td>
                     </tr>
                     <tr>
-                        <td>2.4</td>
-                        <td class="pr">Indicator of the adiabatic medium in the apparatus | Показник адіабати середовища в апараті</td>
-                        <td>-</td>
-                        <td><input type="number" id="adiabaticExponent" value="1.3"></td>
+                      <td>2.3</td>
+                      <td class="pr">Назва апарату </td>
+                      <td>-</td>
+                      <td><input  id="deviceName" value="Назва апарату"></td>
                     </tr>
                     <tr>
-                        <td>2.5</td>
-                        <td class="pr">The environment in the device | Середовище в апараті</td>
+                      <td>2.4</td>
+                      <td class="pr">Тиск абсолютний в апараті</td>
+                      <td>МПа</td>
+                      <td><input type="number" id="absolutePressure" value="5.5"></td>
+                    </tr>
+                    <tr>
+                      <td>2.5</td>
+                      <td class="pr">Температура в апараті</td>
+                      <td><sup>0</sup> C</td>
+                      <td><input type="number" id="temperature" value="25"></td>
+                    </tr>
+                    <tr>
+                      <td>2.6</td>
+                      <td class="pr">Показник адіабати середовища в апараті</td>
+                      <td>-</td>
+                      <td><input type="number" id="adiabaticExponent" value="1.3"></td>
+                    </tr>
+                    <tr>
+                      <td>2.7</td>
+                        <td class="pr">Середовище в апараті</td>
                         <td>-</td>
                         <td>
-                            <select id="theEnvironmentInTheDevice">
-                                <option value="methane"> ЗПГ Метан </option>
-                                <option value="propaneButane"> ЗВГ Пропан-бутан </option>
-                                <option value="methanol"> Метанол </option>
-                                <option value="diesel"> Дизельне пальне </option>
-                                <option value="oil"> Нафта </option>
-                                <option value="gasCondensate">Конденсат </option>
-                                <option value="ethylMercaptan"> Етилмеркаптан</option>
-                            </select>
+                          <select id="theEnvironmentInTheDevice">
+                            <option value="methane"> ЗПГ Метан </option>
+                            <option value="propaneButane"> ЗВГ Пропан-бутан </option>
+                            <option value="methanol"> Метанол </option>
+                            <option value="diesel"> Дизельне пальне </option>
+                            <option value="oil"> Нафта </option>
+                            <option value="gasCondensate">Конденсат </option>
+                            <option value="ethylMercaptan"> Етилмеркаптан</option>
+                          </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>2.6</td>
-                        <td class="pr">Supply pipeline diameter | Діаметр підвідного трубопроводу</td>
-                        <td>mm | мм</td>
-                        <td><input type="number" id="supplyPipelineDiameter" value="108"></td>
+                      <td>2.8</td>
+                      <td class="pr">Діаметр підвідного трубопроводу</td>
+                      <td>мм</td>
+                      <td><input type="number" id="supplyPipelineDiameter" value="108"></td>
                     </tr>    
                     <tr>
-                        <td>2.7</td>
-                        <td class="pr">The thickness of the wall of the pipeline | Товщина стінки підвідного трубопроводу</td>
-                        <td>mm | мм</td>
-                        <td><input type="number" id="theThicknessOfTheWallOfThePipeline" value="6"></td>
+                      <td>2.9</td>
+                      <td class="pr">Товщина стінки підвідного трубопроводу</td>
+                      <td>мм</td>
+                      <td><input type="number" id="theThicknessOfTheWallOfThePipeline" value="6"></td>
                     </tr>
                     <tr>
-                        <td>2.8</td>
-                        <td class="pr">The length of the pipeline | Довжина підвідного трубопроводу</td>
-                        <td>m | м</td>
-                        <td><input type="number" id="theLengthOfThePipeline" value="10"></td>
+                      <td>2.10</td>
+                      <td class="pr">Довжина підвідного трубопроводу</td>
+                      <td>м</td>
+                      <td><input type="number" id="theLengthOfThePipeline" value="10"></td>
                     </tr>
                     <tr>
-                        <td>2.9</td>
-                        <td class="pr">Diameter of one pipeline | Діаметр відвідного трубопроводу</td>
-                        <td>mm | мм</td>
-                        <td><input type="number" id="diameterOfOnePipeline" value="108"></td>
+                      <td>2.11</td>
+                      <td class="pr">Діаметр відвідного трубопроводу</td>
+                      <td>мм</td>
+                      <td><input type="number" id="diameterOfOnePipeline" value="108"></td>
                     </tr>    
                     <tr>
-                        <td>2.10</td>
-                        <td class="pr">Wall thickness of one pipeline | Товщина стінки відвідного трубопроводу</td>
-                        <td>mm | мм</td>
-                        <td><input type="number" id="wallThicknessOfOnePipeline" value="6"></td>
+                      <td>2.12</td>
+                      <td class="pr">Товщина стінки відвідного трубопроводу</td>
+                      <td>мм</td>
+                      <td><input type="number" id="wallThicknessOfOnePipeline" value="6"></td>
                     </tr>
                     <tr>
-                        <td>2.11</td>
-                        <td class="pr">The length of one pipeline | Довжина  відвідного трубопроводу</td>
-                        <td>m | м</td>
-                        <td><input type="number" id="theLengthOfOnePipeline" value="10"></td>
+                      <td>2.13</td>
+                      <td class="pr">Довжина  відвідного трубопроводу</td>
+                      <td>м</td>
+                      <td><input type="number" id="theLengthOfOnePipeline" value="10"></td>
                     </tr>
                     <tr>
-                        <td>2.12</td>
-                        <td class="pr">The volume of the device | Об'єм апарату</td>
-                        <td>m<sup>3</sup> | м<sup>3</sup></td>
-                        <td><input type="number" id="theVolumeOfTheDevice" value="10"></td>
+                      <td>2.14</td>
+                      <td class="pr">Об'єм апарату</td>
+                      <td>м<sup>3</sup></td>
+                      <td><input type="number" id="theVolumeOfTheDevice" value="10"></td>
                     </tr>
                     <tr>
-                        <td>2.13</td>
-                        <td class="pr">The volume of the condensate collector of the device | Об'єм конденсатозбірника апарату</td>
-                        <td>m<sup>3</sup> | м<sup>3</sup></td>
-                        <td><input type="number" id="theVolumeOfTheCondensateCollectorOfTheDevice" value="1.0"></td>
+                      <td>2.15</td>
+                      <td class="pr">Об'єм конденсатозбірника апарату</td>
+                      <td>м<sup>3</sup></td>
+                      <td><input type="number" id="theVolumeOfTheCondensateCollectorOfTheDevice" value="1.0"></td>
                     </tr>
                     <tr>
-                        <td>2.14</td>
-                        <td class="pr">Estimated temperature | Розрахункова температура</td>
-                        <td><sup>0</sup> C</td>
-                        <td><input type="number" id="estimatedTemperature" value="61"></td>
+                      <td>2.16</td>
+                      <td class="pr">Розрахункова температура</td>
+                      <td><sup>0</sup> C</td>
+                      <td><input type="number" id="estimatedTemperature" value="61"></td>
                     </tr>
                     <tr>
-                        <td>2.15</td>
-                        <td class="pr">Media consumption under normal conditions | Витрата середовища за нормальних умов</td>
-                        <td>m<sup>3</sup>/day | м<sup>3</sup>/добу</td>
-                        <td><input type="number" id="mediaConsumptionUnderNormalConditions" value="370000"></td>
+                      <td>2.17</td>
+                      <td class="pr">Витрата середовища за нормальних умов</td>
+                      <td>м<sup>3</sup>/добу</td>
+                      <td><input type="number" id="mediaConsumptionUnderNormalConditions" value="370000"></td>
                     </tr>
                     <tr>
-                        <td>2.16</td>
-                        <td class="pr">The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation | Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки</td>
-                        <td>s | c</td>
-                        <td><input type="number" id="triggerTime" value="300"></td>
+                      <td>2.18</td>
+                      <td class="pr">Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки</td>
+                      <td>c</td>
+                      <td><input type="number" id="triggerTime" value="300"></td>
                     </tr>
                     <tr>
-                        <td>2.17</td>
-                        <td class="pr">Probability of failure of the pipeline shutdown system | Імовірність відмови системи відключення трубопроводів</td>
-                        <td></td>
-                        <td>
+                      <td>2.19</td>
+                      <td class="pr">Імовірність відмови системи відключення трубопроводів</td>
+                      <td></td>
+                      <td>
                           <select id="probabilityOfFailureOfThePipelineShutdownSystem">
                             <option value = 1> Меньш 10 <sup>-6</sup> або запеспечується рузервування елементів</option>
                             <option value = 120 > Більш 10 <sup>-6</sup> або не запеспечується рузервування елементів </option>
                             <option value = 300 > Ручне відключення </option>
                           </select>
-                        </td>
+                      </td>
                     </tr>
                     <tr>
-                        <td>2.18</td>
-                        <td class="pr">Air density at the calculated temperature | Густина повітря за разрахункової температури</td>
-                        <td>kg/m<sup>3</sup> | кг/м<sup>3</sup></td>
+                        <td>2.20</td>
+                        <td class="pr">Густина повітря за разрахункової температури</td>
+                        <td>кг/м<sup>3</sup></td>
                         <td><input type="number" id="airDensityAtTheCalculatedTemperature" value="1.060"></td>
                     </tr>
-
                 </table>
-                <button id='calc' class="calc">Calculate | Рассчитать</button>
+                <button id='calc' class="calc">Розрахувати</button>
             </div>
             <h4></h4>
         </section>
         <!--Секция результатов расчета-->
         <section id='resultsDate' class="resultsDate flex">
             <h4></h4>
-            <div id='results'>
+            <div id='results' class="parameters">
             </div>
         </section>
         <!--Секция о проекте-->
         <section id='aboutProject'>
             <div id='about' class="project-stages">
-                <h4>About this project | Про проект</h4>
-                <p> Задача данного проекта — создать мобильного приложение расчетов к планам локализации и ликвидации аварийных ситуаций (ПЛЛА) 
-                    доступного з будь-якої платформи в будь-якій точці з підключенням до Інтернету. Додаток повинен обробляти вихідні дані, 
-                    виводити результати розрахунку у форматі excel, зберігати вихідні дані та результат у базі користувача та створювати малюнки 
-                    зон вражаючих факторів при  обраних варіантах розвитку аварійної ситуації.
+                <h4>О проекті</h4>
+                <p> Завданням цього проєкту є створення мобільного додатку для розрахунків для планів локалізації та ліквідації надзвичайних ситуацій (ПЛЛА) 
+                  доступні з платформи до майбутніх точок з підключенням до мережі Інтернет. Додаток винен у розкраданні віхідні данини, 
+                  Виводити результати розрахунку у формату Excel, зберігати віхідні дані та результати у баі корыстувача та створювати малюнки 
+                  зон дії факторів противника в розвитку аварійної ситуації.
                 </p>
                 <h4>Етапи проекту</h4>
                 <ol>
@@ -291,17 +307,17 @@
         </section>
         <!--конец секции о проекте-->
         <script src="js/index.js"></script>
-    </article>
+    <!-- </article> -->
     <section id="contact" class="contact flex">
         <div class="contact-form flex">
             <form action="http://ptsv2.com/t/d8uw9-1614284335/post" method="post">
                 <div class="contact-form-row">
                     <div class="contact-form-row-field">
-                        <label for="firstName">Name | Ім'я</label>
+                        <label for="firstName">Ім'я</label>
                         <input type="text" id='firstName'>
                     </div>
                     <div class="contact-form-row-field">
-                        <label for="lastName">Last name | Прізвище</label>
+                        <label for="lastName">Прізвище</label>
                         <input type="text" id='lastName'>
                     </div>
                 </div>
@@ -311,19 +327,19 @@
                         <input type="text" id='email'>
                     </div>
                     <div class="contact-form-row-field">
-                        <label for="phone">Phone | Телефон</label>
+                        <label for="phone">Телефон</label>
                         <input type="text" id='phone'>
                     </div>
                 </div>
                 <div class="contact-form-row-field">
-                    <label for="subject">Topic | Тема</label>
+                    <label for="subject">Тема</label>
                     <input type="text" id='subject'>
                 </div>
                 <div class="contact-form-row-field">
-                    <label for="message">Leave us a message... | Залишити нам повідомлення... </label>
+                    <label for="message">Залишити нам повідомлення... </label>
                     <textarea Name="message" id="message" cols="30" rows="10"></textarea>
                 </div>
-                <button class="contact-form-submit" type="submit">Send | Відіслати</button>
+                <button class="contact-form-submit" type="submit">Відіслати</button>
             </form>
         </div>
     </section>

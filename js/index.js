@@ -1443,7 +1443,7 @@ function determinationOfOxygenStoichiometricCoefficientInTheCombustionReaction (
   const arrayOfErrorMessages = ["substance is incorrect", "Something went wrong and the rounding function to hundredth was calculated incorrectly"];
   const errorMessage = checkingReceivedArgumentValues(arguments, arrayOfErrorMessages);
   try {  
-    let coefficientAtom = defaultData["Число атомів в молекулі сполуки"][initialDate["Main general parameters"]["2.05 The environment in the device"]]
+    let coefficientAtom = defaultData["Число атомів в молекулі сполуки"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]
     // "шаблон": ["углеро", "водород", "кислород", "гологени"],
     let stoichiometricCoefficientOfOxygenInTheCombustionReaction = coefficientAtom[0] + (coefficientAtom[1] - coefficientAtom[3]) / 4 - coefficientAtom[2] / 2
     return stoichiometricCoefficientOfOxygenInTheCombustionReaction
@@ -1452,24 +1452,27 @@ function determinationOfOxygenStoichiometricCoefficientInTheCombustionReaction (
 
 const initialDate = {
   "Main general parameters": {
-    "2.01 Device name | Назва апарату": null,
-    "2.02 Absolute pressure in the device": null,
-    "2.03 The temperature in the device": null,
-    "2.04 Indicator of the adiabatic medium in the apparatus": null,
-    "2.05 The environment in the device": null,
-    "2.06 Supply pipeline diameter": null,
-    "2.07 The thickness of the wall of the pipeline": null,
-    "2.08 The length of the pipeline": null,
-    "2.09 Diameter of one pipeline": null,
-    "2.10 Wall thickness of one pipeline": null,
-    "2.11 The length of one pipeline": null,
-    "2.12 The volume of the device": null,
-    "2.13 The volume of the condensate collector of the device": null,
-    "2.14 Estimated temperature": null,
-    "2.15 Media consumption under normal conditions": null,
-    "2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation": null,
-    "2.17 Probability of failure of the pipeline shutdown system": null,
-    "2.18 Air density at the calculated temperature": null,
+    "2.00 Назва об'єкту": null,
+    "2.01 Назва установки": null,
+    "2.02 Назва блоку": null,
+    "2.03 Назва апарату": null,
+    "2.04 Тиск абсолютний в апараті, МПа": null,
+    "2.05 Температура в апараті	, 0 C": null,
+    "2.06 Показник адіабати середовища в апараті": null,
+    "2.07 Середовище в апараті": null,
+    "2.08 Діаметр підвідного трубопроводу, мм": null,
+    "2.09 Товщина стінки підвідного трубопроводу, мм": null,
+    "2.10 Довжина підвідного трубопроводу, м": null,
+    "2.11 Діаметр відвідного трубопроводу, мм": null,
+    "2.12 Товщина стінки відвідного трубопроводу, мм": null,
+    "2.13 Довжина відвідного трубопроводу, м": null,
+    "2.14 Об'єм апарату, м3": null,
+    "2.15 Об'єм конденсатозбірника апарату, м3": null,
+    "2.16 Розрахункова температура, 0 C": null,
+    "2.17 Витрата середовища за нормальних умов, м3/добу": null,
+    "2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки": null,
+    "2.19 Імовірність відмови системи відключення трубопроводів": null,
+    "2.20 Густина повітря за разрахункової температури, кг/м3": null,
   },
   "Вихідні дані для сценарію 'Факельне горіння'": {
     "The average surface density of thermal radiation of the flame of the torch": null
@@ -1634,34 +1637,37 @@ function savingTheSourceDataInInitialDate () {
   let arrayOfErrorMessages = ["Something went wrong"];
   let errorMessage = checkingReceivedArgumentValues (arguments, arrayOfErrorMessages);
   try {
-    initialDate["Main general parameters"]["2.01 Device name | Назва апарату"] = deviceName.value;
-    initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] = +absolutePressure.value
-    initialDate["Main general parameters"]["2.03 The temperature in the device"] = +temperature.value
-    initialDate["Main general parameters"]["2.04 Indicator of the adiabatic medium in the apparatus"] = +adiabaticExponent.value
-    initialDate["Main general parameters"]["2.05 The environment in the device"] = theEnvironmentInTheDevice.value
-    initialDate["Main general parameters"]["2.06 Supply pipeline diameter"] = +supplyPipelineDiameter.value
-    initialDate["Main general parameters"]["2.07 The thickness of the wall of the pipeline"] = +theThicknessOfTheWallOfThePipeline.value
-    initialDate["Main general parameters"]["2.08 The length of the pipeline"] = +theLengthOfThePipeline.value
-    initialDate["Main general parameters"]["2.09 Diameter of one pipeline"] = +diameterOfOnePipeline.value
-    initialDate["Main general parameters"]["2.10 Wall thickness of one pipeline"] = +wallThicknessOfOnePipeline.value
-    initialDate["Main general parameters"]["2.11 The length of one pipeline"] = +theLengthOfOnePipeline.value
-    initialDate["Main general parameters"]["2.12 The volume of the device"] = +theVolumeOfTheDevice.value
-    initialDate["Main general parameters"]["2.13 The volume of the condensate collector of the device"] = +theVolumeOfTheCondensateCollectorOfTheDevice.value
-    initialDate["Main general parameters"]["2.14 Estimated temperature"] = +estimatedTemperature.value
-    initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] = +mediaConsumptionUnderNormalConditions.value
+    initialDate["Main general parameters"]["2.00 Назва об'єкту"] = objectName.value;
+    initialDate["Main general parameters"]["2.01 Назва установки"] = installationsNamed.value;
+    initialDate["Main general parameters"]["2.02 Назва блоку"] = blocksNamed.value;
+    initialDate["Main general parameters"]["2.03 Назва апарату"] = deviceName.value;
+    initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] = +absolutePressure.value
+    initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"] = +temperature.value
+    initialDate["Main general parameters"]["2.06 Показник адіабати середовища в апараті"] = +adiabaticExponent.value
+    initialDate["Main general parameters"]["2.07 Середовище в апараті"] = theEnvironmentInTheDevice.value
+    initialDate["Main general parameters"]["2.08 Діаметр підвідного трубопроводу, мм"] = +supplyPipelineDiameter.value
+    initialDate["Main general parameters"]["2.09 Товщина стінки підвідного трубопроводу, мм"] = +theThicknessOfTheWallOfThePipeline.value
+    initialDate["Main general parameters"]["2.10 Довжина підвідного трубопроводу, м"] = +theLengthOfThePipeline.value
+    initialDate["Main general parameters"]["2.11 Діаметр відвідного трубопроводу, мм"] = +diameterOfOnePipeline.value
+    initialDate["Main general parameters"]["2.12 Товщина стінки відвідного трубопроводу, мм"] = +wallThicknessOfOnePipeline.value
+    initialDate["Main general parameters"]["2.13 Довжина відвідного трубопроводу, м"] = +theLengthOfOnePipeline.value
+    initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] = +theVolumeOfTheDevice.value
+    initialDate["Main general parameters"]["2.15 Об'єм конденсатозбірника апарату, м3"] = +theVolumeOfTheCondensateCollectorOfTheDevice.value
+    initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"] = +estimatedTemperature.value
+    initialDate["Main general parameters"]["2.17 Витрата середовища за нормальних умов, м3/добу"] = +mediaConsumptionUnderNormalConditions.value
     if (probabilityOfFailureOfThePipelineShutdownSystem.value == 1) {
-      initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"] = +triggerTime.value
-      initialDate["Main general parameters"]["2.17 Probability of failure of the pipeline shutdown system"] = "Меньш 10 <sup>-6</sup> або запеспечується рузервування елементів"
+      initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"] = +triggerTime.value
+      initialDate["Main general parameters"]["2.19 Імовірність відмови системи відключення трубопроводів"] = "Меньш 10 <sup>-6</sup> або запеспечується рузервування елементів"
     } else {
-      initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"] = +probabilityOfFailureOfThePipelineShutdownSystem.value
+      initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"] = +probabilityOfFailureOfThePipelineShutdownSystem.value
       if (probabilityOfFailureOfThePipelineShutdownSystem.value == 120){
-        initialDate["Main general parameters"]["2.17 Probability of failure of the pipeline shutdown system"] = "Більш 10 <sup>-6</sup> або не запеспечується рузервування елементів"
+        initialDate["Main general parameters"]["2.19 Імовірність відмови системи відключення трубопроводів"] = "Більш 10 <sup>-6</sup> або не запеспечується рузервування елементів"
       } else {
-        initialDate["Main general parameters"]["2.17 Probability of failure of the pipeline shutdown system"] = "Ручне відключення"
+        initialDate["Main general parameters"]["2.19 Імовірність відмови системи відключення трубопроводів"] = "Ручне відключення"
       }
     }
 
-    initialDate["Main general parameters"]["2.18 Air density at the calculated temperature"] = +airDensityAtTheCalculatedTemperature.value
+    initialDate["Main general parameters"]["2.20 Густина повітря за разрахункової температури, кг/м3"] = +airDensityAtTheCalculatedTemperature.value
     let elementTorchBuring = document.getElementById('torchBuring');
     if (elementTorchBuring.checked) {
       initialDate["Вихідні дані для сценарію 'Факельне горіння'"]["The average surface density of thermal radiation of the flame of the torch"] = +averageSurfaceDensityOfThermalRadiationOfTheFlameOfTheTorch.value
@@ -1882,7 +1888,7 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     //console.log (keysOfTheResultingObject)
     const tableCalculationResults = document.createElement("table");
     const tableHeader = document.createElement("caption");
-    tableHeader.innerHTML = "3. Calculation results | Результати розрахунку";
+    tableHeader.innerHTML = "3. Результати розрахунку";
     tableCalculationResults.appendChild(tableHeader);
     // заголовок таблицы
     const tr1 = document.createElement("tr");
@@ -1893,7 +1899,7 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     
     tr1.appendChild(th1)
     const th2 = document.createElement("th")
-    th2.innerHTML = initialDate["Main general parameters"]["2.01 Device name | Назва апарату"]
+    th2.innerHTML = initialDate["Main general parameters"]["2.03 Назва апарату"]
     th2.style.width = "15%"
     tr1.appendChild(th2)
     tableCalculationResults.appendChild(tr1)
@@ -1975,41 +1981,60 @@ function displayingTheResultOfTheCalculationToHtml (elementIntoWhichToInsert) {
     elementIntoWhichToInsert.appendChild(tableCalculationResults);
 
     const exportButton = document.createElement("button");
-    exportButton.innerHTML = "Expor to Excel";
+    exportButton.innerHTML = "Експорт до Excel";
     exportButton.id = 'resultToExcel';
     exportButton.classList = 'calc';
+
+    const saveToDisk = document.createElement("button");
+    saveToDisk.innerHTML = "Зберігти дані на диск";
+    saveToDisk.id = 'saveToDisk';
+    saveToDisk.classList = 'calc';
+
     elementIntoWhichToInsert.appendChild(exportButton);
+    elementIntoWhichToInsert.appendChild(saveToDisk);
 
     resultsDate.classList.remove('resultsDate');
   } catch (error) { viewingFunctionErrors(displayingTheResultOfTheCalculationToHtml.name, errorMessage)};
  }
 //calculationResults["1. Вибух"]["1.1 Загальний енергетичний потенціал вибухонебезпечності, Е, кДж"]
 
+/**Функция збереження вихідних даних та результатів розрахунку на диск користувача
+* @param {string} fileName
+* @param {JSON-string} data
+*/
+function downloadUserData(fileName, data) {
+  const blob = new Blob([data], { type: 'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  link.click();
+}
+
 calc.onclick = function () {
   savingTheSourceDataInInitialDate ();
-  let innerDiameterOfSupplyPipe = initialDate["Main general parameters"]["2.06 Supply pipeline diameter"] - 2 * initialDate["Main general parameters"]["2.07 The thickness of the wall of the pipeline"];
-  let internalDiameterOfTheOutletPipe = initialDate["Main general parameters"]["2.09 Diameter of one pipeline"] - 2 * initialDate["Main general parameters"]["2.10 Wall thickness of one pipeline"];
-  intermediateValues["01. Об'єм трубопроводів, м.куб"] = roundingFunctionToHundredths( determiningTheVolumeOfTheCylinderByDiameterAndLength(innerDiameterOfSupplyPipe , initialDate["Main general parameters"]["2.08 The length of the pipeline"]) + 
-    determiningTheVolumeOfTheCylinderByDiameterAndLength(internalDiameterOfTheOutletPipe, initialDate["Main general parameters"]["2.11 The length of one pipeline"]));
+  let innerDiameterOfSupplyPipe = initialDate["Main general parameters"]["2.08 Діаметр підвідного трубопроводу, мм"] - 2 * initialDate["Main general parameters"]["2.09 Товщина стінки підвідного трубопроводу, мм"];
+  let internalDiameterOfTheOutletPipe = initialDate["Main general parameters"]["2.11 Діаметр відвідного трубопроводу, мм"] - 2 * initialDate["Main general parameters"]["2.12 Товщина стінки відвідного трубопроводу, мм"];
+  intermediateValues["01. Об'єм трубопроводів, м.куб"] = roundingFunctionToHundredths( determiningTheVolumeOfTheCylinderByDiameterAndLength(innerDiameterOfSupplyPipe , initialDate["Main general parameters"]["2.10 Довжина підвідного трубопроводу, м"]) + 
+    determiningTheVolumeOfTheCylinderByDiameterAndLength(internalDiameterOfTheOutletPipe, initialDate["Main general parameters"]["2.13 Довжина відвідного трубопроводу, м"]));
   intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] = roundingFunctionToHundredths(determiningOfGasDensityAtDesignTemperature(
-    parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]), 
-    initialDate["Main general parameters"]["2.14 Estimated temperature"]));
+    parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]), 
+    initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"]));
   // в случаи ГГ  
-  if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || initialDate["Main general parameters"]["2.05 The environment in the device"] == 'propaneButane') {
+  if (initialDate["Main general parameters"]["2.07 Середовище в апараті"] == 'methane' || initialDate["Main general parameters"]["2.07 Середовище в апараті"] == 'propaneButane') {
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] = determiningTheDimensionlessFactorBettaFirst(
-      initialDate["Main general parameters"]["2.02 Absolute pressure in the device"],
-      initialDate["Main general parameters"]["2.04 Indicator of the adiabatic medium in the apparatus"]);
+      initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"],
+      initialDate["Main general parameters"]["2.06 Показник адіабати середовища в апараті"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"] = roundingFunctionToHundredths (
-      initialDate["Main general parameters"]["2.12 The volume of the device"] + intermediateValues["01. Об'єм трубопроводів, м.куб"]);
+      initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] + intermediateValues["01. Об'єм трубопроводів, м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.03 Об'єм ПГФ приведений до нормальних умов, м.куб"] = roundingFunctionToHundredths ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]
-      ["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"] * initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * parseFloat(defaultData.temperatureAtNormalConditions) / parseFloat(defaultData.pressureAtStandardConditions) / initialDate["Main general parameters"]["2.03 The temperature in the device"]);
+      ["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"] * initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] * parseFloat(defaultData.temperatureAtNormalConditions) / parseFloat(defaultData.pressureAtStandardConditions) / initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.04 Масса ПГФ безпосередньо знаходящегося у блоці, кг"] = roundingFunctionToHundredths ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]
       ["04.01.03 Об'єм ПГФ приведений до нормальних умов, м.куб"] * intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"]);
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.05 Об'єм ГГ що вийшов з апарата, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * Math.pow (10, 3) / 
-      parseFloat (defaultData.atmosphericPressure) * (initialDate["Main general parameters"]["2.12 The volume of the device"]));
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.06 Об'єм ГГ що вийшов з трубопороводів до їх перекриття, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600 *
-      initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"]);
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.07 Об'єм ГГ що вийшов з трубопороводів після їх перекриття, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * Math.pow (10, 3) / 
+    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.05 Об'єм ГГ що вийшов з апарата, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] * Math.pow (10, 3) / 
+      parseFloat (defaultData.atmosphericPressure) * (initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"]));
+    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.06 Об'єм ГГ що вийшов з трубопороводів до їх перекриття, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.17 Витрата середовища за нормальних умов, м3/добу"] / 24 / 3600 *
+      initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"]);
+    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.07 Об'єм ГГ що вийшов з трубопороводів після їх перекриття, м.куб"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] * Math.pow (10, 3) / 
       parseFloat (defaultData.atmosphericPressure) * intermediateValues["01. Об'єм трубопроводів, м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.08 Об'єм ГГ що вийшов з трубопороводів, м.куб"] = intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]
       ["04.01 Блоку з ПГФ або ГГ"]["04.01.06 Об'єм ГГ що вийшов з трубопороводів до їх перекриття, м.куб"] + intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.07 Об'єм ГГ що вийшов з трубопороводів після їх перекриття, м.куб"];
@@ -2017,38 +2042,38 @@ calc.onclick = function () {
       ["04.01 Блоку з ПГФ або ГГ"]["04.01.05 Об'єм ГГ що вийшов з апарата, м.куб"] + intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.08 Об'єм ГГ що вийшов з трубопороводів, м.куб"]) * 
       intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.10 Енергія адіабатичного розширення ПГФ, кДж"] = roundingFunctionToHundredths ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]
-      ["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] * initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"]);
+      ["04.01.01 Коєфіцієнт адіабатичного розширення за таблицею 1 НПАОП 0.00-1.41-88"] * initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.02 Геометричний об'єм ПГФ у блоці, м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.11 Приведена маса ГГ, кг"]  = roundingFunctionToHundredths ( determinationOfTheReducedMassOfFlammableGases (parseFloat (defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]
-      ["2.05 The environment in the device"]]), intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"], initialDate["Вихідні дані для сценарію 'Вибух'"]
+      ["2.07 Середовище в апараті"]]), intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"], initialDate["Вихідні дані для сценарію 'Вибух'"]
       ["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.12 Сумма енергії адіабатичного розширення та згорання ПГФ, що знаходиться безпосередо у аварійному блоці, кДж"] = roundingFunctionToHundredths ( 
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.10 Енергія адіабатичного розширення ПГФ, кДж"] + intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.11 Приведена маса ГГ, кг"] 
-      * parseFloat (defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]));
+      * parseFloat (defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.13 Коефіцієнт Бетта 2 за таблицею 2 НПАОП 0.00-1.41-88"] = roundingFunctionToHundredths (determiningTheDimensionlessFactorBettaSecond(initialDate["Main general parameters"]
-      ["2.02 Absolute pressure in the device"], initialDate["Main general parameters"]["2.04 Indicator of the adiabatic medium in the apparatus"]));
+      ["2.04 Тиск абсолютний в апараті, МПа"], initialDate["Main general parameters"]["2.06 Показник адіабати середовища в апараті"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.14 Коефіцієнт стисловости середовища"] = roundingFunctionToHundredths (determiningTheCompressibilityCoefficientAtAGivenTemperatureAndPressure (
-      initialDate["Main general parameters"]["2.02 Absolute pressure in the device"],
-      initialDate["Main general parameters"]["2.03 The temperature in the device"] + 273.15,
-      initialDate["Main general parameters"]["2.05 The environment in the device"]));
-    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.15 Гутсина ПГФ у робочих умовах, кг/м.куб"] = roundingFunctionToHundredths (determiningTheDensity (initialDate["Main general parameters"]["2.02 Absolute pressure in the device"], 
-      initialDate["Main general parameters"]["2.03 The temperature in the device"] + 273.15,
+      initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"],
+      initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"] + 273.15,
+      initialDate["Main general parameters"]["2.07 Середовище в апараті"]));
+    intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.15 Гутсина ПГФ у робочих умовах, кг/м.куб"] = roundingFunctionToHundredths (determiningTheDensity (initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"], 
+      initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"] + 273.15,
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.14 Коефіцієнт стисловости середовища"],
-      initialDate["Main general parameters"]["2.05 The environment in the device"]));
+      initialDate["Main general parameters"]["2.07 Середовище в апараті"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.16 Питомий об'єм робочого середовища, м.куб/кг"] = roundingFunctionToHundredths (1 / intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]
       ["04.01.15 Гутсина ПГФ у робочих умовах, кг/м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.17 Швидкість адіабатичного витікання ПГФ, м/с"] = roundingFunctionToHundredths (Math.pow ( 2 * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]
-      ["04.01.13 Коефіцієнт Бетта 2 за таблицею 2 НПАОП 0.00-1.41-88"] * initialDate["Main general parameters"]["2.02 Absolute pressure in the device"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.16 Питомий об'єм робочого середовища, м.куб/кг"], 0.5 ));
+      ["04.01.13 Коефіцієнт Бетта 2 за таблицею 2 НПАОП 0.00-1.41-88"] * initialDate["Main general parameters"]["2.04 Тиск абсолютний в апараті, МПа"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.16 Питомий об'єм робочого середовища, м.куб/кг"], 0.5 ));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.18 Площа перетину трубопроводу вхідного за його діаметром, м.кв"] = determiningThePipeArea (innerDiameterOfSupplyPipe);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.19 Площа перетину трубопроводу вихідного за його діаметром, м.кв"] = determiningThePipeArea (internalDiameterOfTheOutletPipe);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.20 Кількість ГГ що може вийти з данного блоку до суміжного по вхідному трубопроводу за час до його перекритя, кг"] = roundingFunctionToHundredths (
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.18 Площа перетину трубопроводу вхідного за його діаметром, м.кв"]
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.17 Швидкість адіабатичного витікання ПГФ, м/с"] 
-      * initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"]
+      * initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"]
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.15 Гутсина ПГФ у робочих умовах, кг/м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.21 Кількість ГГ що може вийти з данного блоку до суміжного по вихідному трубопроводу за час до його перекритя, кг"] = 
       roundingFunctionToHundredths (intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.19 Площа перетину трубопроводу вихідного за його діаметром, м.кв"]
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.17 Швидкість адіабатичного витікання ПГФ, м/с"] 
-      * initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"] 
+      * initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.15 Гутсина ПГФ у робочих умовах, кг/м.куб"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.23 Загальний енергетичний потенціал вибухонебезпеки блоку, кДж"] = 
       roundingFunctionToHundredths (intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.12 Сумма енергії адіабатичного розширення та згорання ПГФ, що знаходиться безпосередо у аварійному блоці, кДж"]
@@ -2065,34 +2090,34 @@ calc.onclick = function () {
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.25 Відносний енергетичний потенціал, кДж"],
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.24 Загальна маса ГГ приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"] = roundingFunctionToHundredths (
-      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT) * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] 
+      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT) * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.01 Блоку з ПГФ або ГГ"]["04.01.09 Масса ГГ що потрапила до навколишнього простору під час розрахункової аварії, кг"]);
   } else { // в случаи ЛЗР
-    intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] = roundingFunctionToHundredths( determiningTheSaturatedSteamPressure(initialDate["Main general parameters"]["2.05 The environment in the device"], initialDate["Main general parameters"]["2.14 Estimated temperature"]));
+    intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] = roundingFunctionToHundredths( determiningTheSaturatedSteamPressure(initialDate["Main general parameters"]["2.07 Середовище в апараті"], initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] = roundingFunctionToHundredths ( evaporationAreaDetermination (
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"],
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"],
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The height of the collapse | Висота обвалування"],
-      initialDate["Main general parameters"]["2.12 The volume of the device"], intermediateValues["01. Об'єм трубопроводів, м.куб"]));
+      initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"], intermediateValues["01. Об'єм трубопроводів, м.куб"]));
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] = determiningTheValueOfTheNu (
       initialDate["Вихідні дані для сценарію 'Вибух'"]["Швидкість повітряного потоку над дзеркалом випаровуванн, м/с"],
-      initialDate["Main general parameters"]["2.14 Estimated temperature"]);
+      initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"]);
       if (anExplosionInTheRoom.checked) {
         intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
           = Math.pow(10, -6) 
           * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.02 Коефіціент Ню за таблицею 3"] 
-          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5)
+          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) ,0.5)
           * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"];
       } else {
         intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"]
           = Math.pow(10, -6) 
-          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) ,0.5) 
+          * Math.pow (parseFloat(defaultData.molarMass[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) ,0.5) 
           * intermediateValues["03. Тиск насиченої пари ПГФ, кПа"];
       }
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] = roundingFunctionToHundredths(
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.03 Інтенсивність випаровування, кг/(с * м.кв)"] 
       * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] 
-      * initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"]);
+      * initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.03 Загальний енергетичний потенціал вибухонебезпеки блоку, кДж"] = roundingFunctionToHundredths (
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"] * 46000);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] = 
@@ -2103,12 +2128,12 @@ calc.onclick = function () {
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.05 Відносний енергетичний потенціал, кДж"],
       intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"]);
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"] = roundingFunctionToHundredths (
-      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT)
+      0.4 * parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) / 0.9 / parseFloat (defaultData.specificExplosiveHeatOfTNT)
       * initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"] * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.04 Маса рідини що випарилась з поверхні розливу за час спрацювання автоматики, кг"]);
   }
   intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.01 Коефіцієнт участі"] = initialDate["Вихідні дані для сценарію 'Вибух'"]["Коефіцієнт участі відповідно до ДСТУ Б В.1.1-36:2016 (стор. 43)"];
   intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.02 Приведена маса ПГФ абоа ГГ, кг"] = roundingFunctionToHundredths (
-    parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.05 The environment in the device"]]) / parseFloat (defaultData.constantQ0) 
+    parseFloat(defaultData["Питома теплота згорання, кДж/кг"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) / parseFloat (defaultData.constantQ0) 
     * intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] * intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.01 Коефіцієнт участі"]);
   intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.03 Умовний радіус зони руйнування під час вибуху, м"] = determinationOfTheConditionalRadiusOfTheBlastFractureZone (
     intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.07 Тротиловий еквівалент вибухонебезпечності блоку, кг"],
@@ -2142,12 +2167,12 @@ calc.onclick = function () {
     intermediateValues["05. Розрахунок вибуху зовнішніх утановок"]["05.04 Радіус руйнації в залежності від розміру надлишкового тиску по зонах"]["05.04.05 Надлишковий тиск 2 кПа, малі пошкодження віконних рам (скла), що може привести до травмування обслуговуючого персоналу, R5, м"];
   // факельное горение
   if (initialDate["Вихідні дані для сценарію 'Факельне горіння'"]["The average surface density of thermal radiation of the flame of the torch"]) {
-    intermediateValues["06. Факельне горіння"]["06.01 Швидкысть витыкання середовища із вхідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600 / Math.PI / Math.pow (innerDiameterOfSupplyPipe / 1000, 2));
-    intermediateValues["06. Факельне горіння"]["06.02 Швидкысть витыкання середовища із вихідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600 / Math.PI / Math.pow (internalDiameterOfTheOutletPipe / 1000, 2));
+    intermediateValues["06. Факельне горіння"]["06.01 Швидкысть витыкання середовища із вхідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.17 Витрата середовища за нормальних умов, м3/добу"] / 24 / 3600 / Math.PI / Math.pow (innerDiameterOfSupplyPipe / 1000, 2));
+    intermediateValues["06. Факельне горіння"]["06.02 Швидкысть витыкання середовища із вихідного трубопроводу, м/с"] = roundingFunctionToHundredths (4 * initialDate["Main general parameters"]["2.17 Витрата середовища за нормальних умов, м3/добу"] / 24 / 3600 / Math.PI / Math.pow (internalDiameterOfTheOutletPipe / 1000, 2));
     intermediateValues["06. Факельне горіння"]["06.03 Довжина факелу у вхідного тубопроводу, м"] = roundingFunctionToHundredths (120 * Math.pow (innerDiameterOfSupplyPipe / 1000, 0.8) / (1 + 30 / intermediateValues["06. Факельне горіння"]["06.01 Швидкысть витыкання середовища із вхідного трубопроводу, м/с"]));
     intermediateValues["06. Факельне горіння"]["06.04 Довжина факелу у вихідного тубопроводу, м"] = roundingFunctionToHundredths (120 * Math.pow (internalDiameterOfTheOutletPipe / 1000, 0.8) / (1 + 30 / intermediateValues["06. Факельне горіння"]["06.02 Швидкысть витыкання середовища із вихідного трубопроводу, м/с"]));
     intermediateValues["06. Факельне горіння"]["06.05 Максимальна довжина факелу, м"] = Math.max (intermediateValues["06. Факельне горіння"]["06.03 Довжина факелу у вхідного тубопроводу, м"], intermediateValues["06. Факельне горіння"]["06.04 Довжина факелу у вихідного тубопроводу, м"]);
-    intermediateValues["06. Факельне горіння"]["06.06 Довжина факилу для надкритичного витікання, коли газ витікає зі звуковою швидкістю, м"] = roundingFunctionToHundredths (10.5 * Math.pow (initialDate["Main general parameters"]["2.15 Media consumption under normal conditions"] / 24 / 3600, 0/4));
+    intermediateValues["06. Факельне горіння"]["06.06 Довжина факилу для надкритичного витікання, коли газ витікає зі звуковою швидкістю, м"] = roundingFunctionToHundredths (10.5 * Math.pow (initialDate["Main general parameters"]["2.17 Витрата середовища за нормальних умов, м3/добу"] / 24 / 3600, 0/4));
     intermediateValues["06. Факельне горіння"]["06.07 Максимальна ширина факелу, м"] = roundingFunctionToHundredths (0.15 * intermediateValues["06. Факельне горіння"]["06.05 Максимальна довжина факелу, м"]);
     intermediateValues["06. Факельне горіння"]["06.08 Діаметер факелу, м"] = intermediateValues["06. Факельне горіння"]["06.07 Максимальна ширина факелу, м"];
     intermediateValues["06. Факельне горіння"]["06.09 Довжина факелу для настильних факелів, м"] = roundingFunctionToHundredths (1.25 * intermediateValues["06. Факельне горіння"]["06.05 Максимальна довжина факелу, м"]);
@@ -2174,13 +2199,13 @@ calc.onclick = function () {
   calculationResults["2. Факельне горіння"]["2.7 Без негативних наслідків для людини у брезентовому одязі:"]["2.7.1 радіус ураження, м"] = intermediateValues["06. Факельне горіння"]["06.15 Без негативних наслідків для людини у брезентовому одязі"]["радіус ураження, м"];
   
   // расчет взрывоопасной зоны
-  if (initialDate["Main general parameters"]["2.05 The environment in the device"] == 'methane' || initialDate["Main general parameters"]["2.05 The environment in the device"] ==  'propaneButane') {
+  if (initialDate["Main general parameters"]["2.07 Середовище в апараті"] == 'methane' || initialDate["Main general parameters"]["2.07 Середовище в апараті"] ==  'propaneButane') {
     intermediateValues["07. Можлива вибухонебезпечна зона"]["07.02 Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м"] = roundingFunctionToHundredths (
-      14.5632 * Math.pow (intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] / intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] / parseFloat (defaultData.lowerConcentrationAisleOfFireSpread[initialDate["Main general parameters"]["2.05 The environment in the device"]]) , 0.33))
+      14.5632 * Math.pow (intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] / intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] / parseFloat (defaultData.lowerConcentrationAisleOfFireSpread[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) , 0.33))
   } else {
-    intermediateValues["07. Можлива вибухонебезпечна зона"]["07.01 Коефіцієнт Кк"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.16 The time of operation of the automation system for disconnecting pipelines according to the passport data of the installation"] / 3600);
+    intermediateValues["07. Можлива вибухонебезпечна зона"]["07.01 Коефіцієнт Кк"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.18 Час спрацювання системи автоматики відключення трубопроводів згідно з паспортними даними установки"] / 3600);
     intermediateValues["07. Можлива вибухонебезпечна зона"]["07.02 Горизонтальні розміри зони, які обмежують область концентрацій, що перевищують нижню концентраційну межу поширення полум'я горючих газів, м"] = roundingFunctionToHundredths (
-      3.1501 * intermediateValues["07. Можлива вибухонебезпечна зона"]["07.01 Коефіцієнт Кк"] ** 0.5 * (intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] / parseFloat (defaultData.lowerConcentrationAisleOfFireSpread[initialDate["Main general parameters"]["2.05 The environment in the device"]])) ** 0.813 
+      3.1501 * intermediateValues["07. Можлива вибухонебезпечна зона"]["07.01 Коефіцієнт Кк"] ** 0.5 * (intermediateValues["03. Тиск насиченої пари ПГФ, кПа"] / parseFloat (defaultData.lowerConcentrationAisleOfFireSpread[initialDate["Main general parameters"]["2.07 Середовище в апараті"]])) ** 0.813 
       * ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.04 Загальна маса ГГ або приведена до єдиної питомої енергії згорання (46000 кДж/кг), кг"] / intermediateValues["02. Густина горючих газів або пари ЛЗР або ГР при разрахунковій температурі, кг/м.куб"] 
       / intermediateValues["03. Тиск насиченої пари ПГФ, кПа"]) ** 0.333 + ( intermediateValues["04. Загальний енергетичний потенціал вибухонебезпеки блоку"]["04.02 Блоку з ЛЗР"]["04.02.01 Площа випаровування, м.кв"] / Math.PI ) ** 0.5 );
   }
@@ -2189,30 +2214,30 @@ calc.onclick = function () {
 
   // Расчет пожара пролива
   if (straitFire.checked) {
-    if (initialDate["Main general parameters"]["2.13 The volume of the condensate collector of the device"] == 0) {
+    if (initialDate["Main general parameters"]["2.15 Об'єм конденсатозбірника апарату, м3"] == 0) {
       if (initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"] !== 0) {
         if (initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"] 
-            * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The height of the collapse | Висота обвалування"] > initialDate["Main general parameters"]["2.12 The volume of the device"]) {
+            * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The height of the collapse | Висота обвалування"] > initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"]) {
           intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths (
              initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"]);
         } else { 
           intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths ( 
-            initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"] + ( initialDate["Main general parameters"]["2.12 The volume of the device"] 
+            initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"] + ( initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] 
             - initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The length of the roll | Довжина обвалування"] * initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The width of the collapse | Ширина обвалування"]) / parseFloat ( defaultData["Висота слою розливу"]));
         }
       } else {
-        intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths (initialDate["Main general parameters"]["2.12 The volume of the device"] / parseFloat ( defaultData["Висота слою розливу"]));
+        intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths (initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] / parseFloat ( defaultData["Висота слою розливу"]));
       }
     } else {
-      intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.13 The volume of the condensate collector of the device"] / parseFloat ( defaultData["Висота слою розливу"] ));
+      intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] = roundingFunctionToHundredths ( initialDate["Main general parameters"]["2.15 Об'єм конденсатозбірника апарату, м3"] / parseFloat ( defaultData["Висота слою розливу"] ));
     }
     intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] = roundingFunctionToHundredths (( 4 * intermediateValues["08. Пожежа проливу"]["08.01 Площа проливу, м.кв"] / Math.PI ) ** 0.5);
     intermediateValues["08. Пожежа проливу"]["08.03 Густина теплового випромінювання полум'я в залежності від біаметру вогнища, кВт/м.кв"] = 
       (initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]
         ["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] !==0)? 
       initialDate["Вихідні дані для сценарію 'Пожежа проливу'"]["The average surface density of thermal radiation of the flame of the torch fires of shed in accordance with DSTU B V.1.1-36:2016 (p. 55)| Середньоповерхнева густина теплового випромінювання полум'я пожежі проливу відповідно до ДСТУ Б В.1.1-36:2016 (стор. 55)"] 
-      : determinationOfFlameThermalRadiationDensityAsAFunctionOfSpillDiameter (intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"], initialDate["Main general parameters"]["2.05 The environment in the device"]);
-    intermediateValues["08. Пожежа проливу"]["08.04 Питома масова швидкість вигорання середовища, кг/(м.кв * с)"] = parseFloat (defaultData["Питома швидкість вигорання, кг/(м.кв * с)"][initialDate["Main general parameters"]["2.05 The environment in the device"]]);
+      : determinationOfFlameThermalRadiationDensityAsAFunctionOfSpillDiameter (intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"], initialDate["Main general parameters"]["2.07 Середовище в апараті"]);
+    intermediateValues["08. Пожежа проливу"]["08.04 Питома масова швидкість вигорання середовища, кг/(м.кв * с)"] = parseFloat (defaultData["Питома швидкість вигорання, кг/(м.кв * с)"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]);
     intermediateValues["08. Пожежа проливу"]["08.05 Висота полум'я, м"] = roundingFunctionToHundredths( 
       42 * intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"] * (intermediateValues["08. Пожежа проливу"]["08.04 Питома масова швидкість вигорання середовища, кг/(м.кв * с)"] / parseFloat(defaultData["Густина повітря за разрахункової температури (61 гарус С)"])
       / (parseFloat(defaultData.accelerationOfGravity) * intermediateValues["08. Пожежа проливу"]["08.02 Діаметр вогнища пожежі, м"]) ** 0.5) ** 0.61);
@@ -2278,20 +2303,20 @@ calc.onclick = function () {
   }
 
   //Расчет параметров облака ОХВ
-  if (evaporationOfAHazardousChemicalSubstance.checked && initialDate["Main general parameters"]["2.05 The environment in the device"] == "ethylMercaptan"){
-    intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] = 0.8 * initialDate["Main general parameters"]["2.12 The volume of the device"] * parseFloat(defaultData.densityUnderNormalConditions.liquids[initialDate["Main general parameters"]["2.05 The environment in the device"]]);
-    intermediateValues["10. Випаровування НХР"]["10.02 Радіус району аварії, км"] = initialDate["Main general parameters"]["2.12 The volume of the device"] < 100 ? 0.5 : 1;
+  if (evaporationOfAHazardousChemicalSubstance.checked && initialDate["Main general parameters"]["2.07 Середовище в апараті"] == "ethylMercaptan"){
+    intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] = 0.8 * initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] * parseFloat(defaultData.densityUnderNormalConditions.liquids[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]);
+    intermediateValues["10. Випаровування НХР"]["10.02 Радіус району аварії, км"] = initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"] < 100 ? 0.5 : 1;
     intermediateValues["10. Випаровування НХР"]["10.03 Площа району аварії, км.кв"] = roundingFunctionToHundredths(Math.PI * intermediateValues["10. Випаровування НХР"]["10.02 Радіус району аварії, км"] ** 2);
-    intermediateValues["10. Випаровування НХР"]["10.04 Значення поправного коефіцієнта Кt1, що враховує вплив температури повітря на глибину поширення первинної хмари НХР"] = determinationOfTheCorrectionFactorKt1 (initialDate["Main general parameters"]["2.03 The temperature in the device"], 
-                                                                                                                                                                                                                      initialDate["Main general parameters"]["2.05 The environment in the device"]);
-    intermediateValues["10. Випаровування НХР"]["10.05 Кількість НХР, що перейшла в первинну хмару, кг"] = (initialDate["Main general parameters"]["2.03 The temperature in the device"] > parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.05 The environment in the device"]])) ?
-     intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] * parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.05 The environment in the device"]])* (initialDate["Main general parameters"]["2.03 The temperature in the device"] 
-     - parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.05 The environment in the device"]])) / parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.05 The environment in the device"]]) : 0;
+    intermediateValues["10. Випаровування НХР"]["10.04 Значення поправного коефіцієнта Кt1, що враховує вплив температури повітря на глибину поширення первинної хмари НХР"] = determinationOfTheCorrectionFactorKt1 (initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"], 
+                                                                                                                                                                                                                      initialDate["Main general parameters"]["2.07 Середовище в апараті"]);
+    intermediateValues["10. Випаровування НХР"]["10.05 Кількість НХР, що перейшла в первинну хмару, кг"] = (initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"] > parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.07 Середовище в апараті"]])) ?
+     intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] * parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.07 Середовище в апараті"]])* (initialDate["Main general parameters"]["2.05 Температура в апараті	, 0 C"] 
+     - parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.07 Середовище в апараті"]])) / parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) : 0;
     intermediateValues["10. Випаровування НХР"]["10.06 Кількість НХР, що перейшала у вторинну хмару, кг"] = intermediateValues["10. Випаровування НХР"]["10.05 Кількість НХР, що перейшла в первинну хмару, кг"] == 0 ? 
       intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] 
       : intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"] - intermediateValues["10. Випаровування НХР"]["10.05 Кількість НХР, що перейшла в первинну хмару, кг"];
-    intermediateValues["10. Випаровування НХР"]["10.07 Поправочний коефіцєнт К"] = initialDate["Main general parameters"]["2.05 The environment in the device"] == "ethylMercaptan" ? 9 : 5
-    intermediateValues["10. Випаровування НХР"]["10.08 Порогова токсодоза, PCt50"] = 14.4 * intermediateValues["10. Випаровування НХР"]["10.07 Поправочний коефіцєнт К"] * parseFloat(defaultData.maximumAllowableConcentrationInTheAirOfTheWrkingArea[initialDate["Main general parameters"]["2.05 The environment in the device"]]);
+    intermediateValues["10. Випаровування НХР"]["10.07 Поправочний коефіцєнт К"] = initialDate["Main general parameters"]["2.07 Середовище в апараті"] == "ethylMercaptan" ? 9 : 5
+    intermediateValues["10. Випаровування НХР"]["10.08 Порогова токсодоза, PCt50"] = 14.4 * intermediateValues["10. Випаровування НХР"]["10.07 Поправочний коефіцєнт К"] * parseFloat(defaultData.maximumAllowableConcentrationInTheAirOfTheWrkingArea[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]);
     intermediateValues["10. Випаровування НХР"]["10.09 Комплексний показник Кр"] = determinationOfTheComplexIndicatorKp (initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Вид рельєфу"], initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Вид рослинності"], 
       initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Тип лісу"], initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Пора року"]);
     intermediateValues["10. Випаровування НХР"]["10.10 Коефіцієнт впливу місцевості Км"] = determinationOfTheTerrainInfluenceCoefficientKm (intermediateValues["10. Випаровування НХР"]["10.09 Комплексний показник Кр"], 
@@ -2311,23 +2336,23 @@ calc.onclick = function () {
     intermediateValues["10. Випаровування НХР"]["10.17 Приведений діаметер площі поверхні проливу, км"] = roundingFunctionToHundredths (
                                                                                                             determiningTheReducedDiameterOfTheSurfaceAreaOfAHazardousChemicalSpill (
                                                                                                               initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Наявність обвалування"], 
-                                                                                                              initialDate["Main general parameters"]["2.12 The volume of the device"],
+                                                                                                              initialDate["Main general parameters"]["2.14 Об'єм апарату, м3"],
                                                                                                               intermediateValues["10. Випаровування НХР"]["10.01 Маса НХР у ємності, кг"],
                                                                                                               intermediateValues["10. Випаровування НХР"]["10.05 Кількість НХР, що перейшла в первинну хмару, кг"],
-                                                                                                              parseFloat(defaultData.densityUnderNormalConditions.liquids[initialDate["Main general parameters"]["2.05 The environment in the device"]]),
+                                                                                                              parseFloat(defaultData.densityUnderNormalConditions.liquids[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]),
                                                                                                               initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Висота обвалування (для ємностей об'ємом більше 2000 т), м"]
                                                                                                             )
                                                                                                           );
     intermediateValues["10. Випаровування НХР"]["10.18 Питома швидкість випаровування, кг/(м.кв*с)"] = roundingFunctionToHundredths (
                                                                                                         0.041 * initialDate["Вихідні дані для сценарію 'Випаровування небезпечної хімічної речовини"]["Швидкість вітру на висоті 1-10 м, м/с"] 
-                                                                                                        * parseFloat (defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]])
+                                                                                                        * parseFloat (defaultData.molarMass[initialDate["Main general parameters"]["2.07 Середовище в апараті"]])
                                                                                                         / (intermediateValues["10. Випаровування НХР"]["10.17 Приведений діаметер площі поверхні проливу, км"] ** 0.14) 
-                                                                                                        / (initialDate["Main general parameters"]["2.14 Estimated temperature"] + 273.15)
-                                                                                                        * Math.E ** (parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.05 The environment in the device"]]) 
-                                                                                                                      * parseFloat (defaultData.molarMass[initialDate["Main general parameters"]["2.05 The environment in the device"]]) 
+                                                                                                        / (initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"] + 273.15)
+                                                                                                        * Math.E ** (parseFloat(defaultData.specificHeatOfVaporization[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) 
+                                                                                                                      * parseFloat (defaultData.molarMass[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) 
                                                                                                                       / parseFloat (defaultData.universalGasConstant)
-                                                                                                                      * (1/(parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.05 The environment in the device"]]) + 273.15) 
-                                                                                                                          - 1/(initialDate["Main general parameters"]["2.14 Estimated temperature"] + 273.15) )
+                                                                                                                      * (1/(parseFloat (defaultData.boilingPoint[initialDate["Main general parameters"]["2.07 Середовище в апараті"]]) + 273.15) 
+                                                                                                                          - 1/(initialDate["Main general parameters"]["2.16 Розрахункова температура, 0 C"] + 273.15) )
                                                                                                                     )
                                                                                                       )
     intermediateValues["10. Випаровування НХР"]["10.19 Площа поверхні виливу, м.кв"] = roundingFunctionToHundredths (Math.PI * intermediateValues["10. Випаровування НХР"]["10.17 Приведений діаметер площі поверхні проливу, км"] ** 2 / 4);
@@ -2371,7 +2396,7 @@ calc.onclick = function () {
     intermediateValues["11. Вибух у приміщенні"]["11.01 Об'єм приміщення, м.куб"] = roundingFunctionToHundredths (initialDate["Вихідні дані для сценарію 'Вибух в приміщенні'"]["Довжина приміщення, м"] 
       * initialDate["Вихідні дані для сценарію 'Вибух в приміщенні'"]["Ширина приміщення, м"] * initialDate["Вихідні дані для сценарію 'Вибух в приміщенні'"]["Room height | Висота приміщення"]);
     intermediateValues["11. Вибух у приміщенні"]["11.02 Об'єм приміщення вільний, м.куб"] = roundingFunctionToHundredths (intermediateValues["11. Вибух у приміщенні"]["11.01 Об'єм приміщення, м.куб"] - initialDate["Вихідні дані для сценарію 'Вибух в приміщенні'"]["Об'єм зайнятий допоміжним обладнанням, м"]);
-    intermediateValues["11. Вибух у приміщенні"]["11.03 Коефіцієнт участі горючого газу у вибуху відповідно до таблиці 2 ДСТУ Б В.1.1-60-2016"] = defaultData["Коефіцієнт учачсті"][initialDate["Main general parameters"]["2.05 The environment in the device"]]
+    intermediateValues["11. Вибух у приміщенні"]["11.03 Коефіцієнт участі горючого газу у вибуху відповідно до таблиці 2 ДСТУ Б В.1.1-60-2016"] = defaultData["Коефіцієнт учачсті"][initialDate["Main general parameters"]["2.07 Середовище в апараті"]]
     intermediateValues["11. Вибух у приміщенні"]["11.04 Стехіометричний коєфіцієнт кисню в реакції горіння Бетта"] = determinationOfOxygenStoichiometricCoefficientInTheCombustionReaction ()
     intermediateValues["11. Вибух у приміщенні"]["11.05 Стехіометрична концентрація ГГ або парів ЛЗР та ГР, %(об.)"] = roundingFunctionToHundredths ( 100 / (1 + 4.84 * intermediateValues["11. Вибух у приміщенні"]["11.04 Стехіометричний коєфіцієнт кисню в реакції горіння Бетта"]));
     intermediateValues["11. Вибух у приміщенні"]["11.06 Надлишковий тиск вибуху, кПа"] = roundingFunctionToHundredths((initialDate["Вихідні дані для сценарію 'Вибух в приміщенні'"]["Максимальний тиск вибуху стехіометричної суміші у замкнутому об'ємі, кПа"] - parseFloat ( defaultData.atmosphericPressure)) 
@@ -2393,6 +2418,18 @@ calc.onclick = function () {
   console.log (initialDate)
   console.log (intermediateValues)
   console.log (calculationResults)
+
+  //формування об'єкту данних для зберігання на диска
+  const userData = {
+    defaultData: defaultData,
+    initialDate: initialDate,
+    intermediateValues: intermediateValues,
+    calculationResults: calculationResults
+  };
+
+  // Преобразуем объект в JSON-строку
+  const dataStr = JSON.stringify(userData);
+
   resultToExcel.onclick = (() => {
     const uri = 'data:application/vnd.ms-excel;base64,',
       template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
@@ -2408,4 +2445,10 @@ calc.onclick = function () {
     };
   })();
   
+  saveToDisk.onclick = (()=> {
+    const userFileName = initialDate["Main general parameters"]["2.00 Назва об'єкту"] + "_" + initialDate["Main general parameters"]["2.01 Назва установки"] + "_" + initialDate["Main general parameters"]["2.02 Назва блоку"] + "_" + initialDate["Main general parameters"]["2.03 Назва апарату"]
+    return () => {
+       downloadUserData(userFileName, dataStr);
+    };
+  })();
 }
